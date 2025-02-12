@@ -124,12 +124,17 @@ body {
 }
 
 .tag {
-  background: #004080;
-  color: #fff;
+  border: 1px dashed rgba(128, 128, 128, 0.508);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: #333;
   padding: 5px 10px;
   margin: 5px;
   border-radius: 3px;
   cursor: pointer;
+  z-index: auto;
+}
+.tag:hover {
+  background-color: rgba(211, 211, 211, 0.436);
 }
 
 /* --- Sections (Cards) --- */
@@ -157,11 +162,11 @@ body {
 }
 
 .card {
+  border: 1px dashed rgba(128, 128, 128, 0.5);
   background: #f4f4f4;
   padding: 20px;
   flex: 1 1 300px;
   border-radius: 5px;
-  text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -176,14 +181,14 @@ body {
 .card-link {
   text-decoration: none;
   color: #fff;
-  background: #004080;
+  background: gray;
   padding: 10px 15px;
   border-radius: 5px;
 }
 
 /* --- Footer --- */
 footer {
-  background: #333;
+  background: gray;
   color: #fff;
   text-align: center;
   padding: 20px 0;
