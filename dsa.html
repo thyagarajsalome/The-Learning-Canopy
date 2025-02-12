@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundations and Advances in DSA</title>
+    <style>
+      /* ===== Global Reset and Base Styles ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f9f9f9;
+      }
+
+      /* ===== Sidebar Styles ===== */
+      .sidebar {
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        z-index: 1001;
+        top: 0;
+        left: -250px; /* Hidden by default */
+        background: #004080;
+        color: #fff;
+        overflow-y: auto;
+        transition: 0.3s;
+        padding-top: 60px;
+      }
+      .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 1.2em;
+        color: #fff;
+        display: block;
+        transition: 0.3s;
+      }
+      .sidebar a:hover {
+        background: #003060;
+      }
+      .sidebar .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.5em;
+        cursor: pointer;
+      }
+
+      /* ===== Sidebar Toggle Button ===== */
+      #sidebar-toggle {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1002;
+        font-size: 1.5em;
+        background: #004080;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      /* ===== Main Content Styles ===== */
+      main {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+        transition: margin-left 0.3s;
+      }
+      section {
+        margin-bottom: 50px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      section h1,
+      section h2,
+      section h3 {
+        margin-bottom: 15px;
+        color: #004080;
+      }
+      section p,
+      section li {
+        margin-bottom: 15px;
+      }
+      section ul {
+        list-style-type: disc;
+        margin-left: 20px;
+      }
+      pre {
+        background: #eee;
+        padding: 15px;
+        overflow-x: auto;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
+      code {
+        font-family: Consolas, monospace;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ccc;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+
+      /* ===== Footer Styles ===== */
+      footer {
+        background: #004080;
+        color: #fff;
+        text-align: center;
+        padding: 15px 20px;
+        margin-top: 20px;
+      }
+
+      /* ===== Responsive Adjustments ===== */
+      @media screen and (max-width: 768px) {
+        #sidebar-toggle {
+          padding: 8px 12px;
+          font-size: 1.2em;
+        }
+        .sidebar {
+          width: 200px;
+          left: -200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== Sidebar ===== -->
+    <div id="sidebar" class="sidebar">
+      <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+      <a href="#toc" onclick="toggleSidebar()">Home</a>
+      <a href="#chapter1" onclick="toggleSidebar()"
+        >Chapter 1: Introduction to DSA</a
+      >
+      <a href="#chapter2" onclick="toggleSidebar()"
+        >Chapter 2: Basic Data Structures</a
+      >
+      <a href="#chapter3" onclick="toggleSidebar()"
+        >Chapter 3: Advanced Data Structures</a
+      >
+      <a href="#chapter4" onclick="toggleSidebar()">Chapter 4: Algorithms</a>
+      <a href="#chapter5" onclick="toggleSidebar()"
+        >Chapter 5: JavaScript Code Examples</a
+      >
+      <a href="#chapter6" onclick="toggleSidebar()"
+        >Chapter 6: Complexity Analysis</a
+      >
+      <a href="#chapter7" onclick="toggleSidebar()"
+        >Chapter 7: Conclusion & Future Trends</a
+      >
+    </div>
+
+    <!-- ===== Sidebar Toggle Button ===== -->
+    <button id="sidebar-toggle" onclick="toggleSidebar()">&#9776;</button>
+
+    <!-- ===== Main Content ===== -->
+    <main>
+      <!-- Table of Contents Section -->
+      <section id="toc">
+        <h1>Foundations and Advances in DSA</h1>
+        <h2>Table of Contents</h2>
+        <ul>
+          <li><a href="#chapter1">Chapter 1: Introduction to DSA</a></li>
+          <li><a href="#chapter2">Chapter 2: Basic Data Structures</a></li>
+          <li><a href="#chapter3">Chapter 3: Advanced Data Structures</a></li>
+          <li><a href="#chapter4">Chapter 4: Algorithms</a></li>
+          <li><a href="#chapter5">Chapter 5: JavaScript Code Examples</a></li>
+          <li><a href="#chapter6">Chapter 6: Complexity Analysis</a></li>
+          <li><a href="#chapter7">Chapter 7: Conclusion & Future Trends</a></li>
+        </ul>
+      </section>
+
+      <!-- Chapter 1: Introduction to DSA -->
+      <section id="chapter1">
+        <h1>Chapter 1: Introduction to DSA</h1>
+        <p>
+          <strong>Data Structures and Algorithms (DSA)</strong> are fundamental
+          concepts in computer science. They form the basis for writing
+          efficient and effective code.
+        </p>
+        <p>
+          <em>Data Structures</em> help you store and organize data (e.g.,
+          arrays, linked lists, trees), while <em>Algorithms</em> are
+          step‑by‑step procedures for solving problems (e.g., sorting,
+          searching).
+        </p>
+        <p>
+          Mastering DSA is essential for solving real‑world problems, optimizing
+          performance, and preparing for technical interviews.
+        </p>
+      </section>
+
+      <!-- Chapter 2: Basic Data Structures -->
+      <section id="chapter2">
+        <h1>Chapter 2: Basic Data Structures</h1>
+        <h2>Arrays</h2>
+        <p>
+          Arrays are collections of elements stored at contiguous memory
+          locations. They allow random access with an index.
+        </p>
+        <h2>Linked Lists</h2>
+        <p>
+          A linked list is a sequence of nodes where each node contains data and
+          a pointer to the next node. They are useful for dynamic memory
+          allocation.
+        </p>
+        <h2>Stacks and Queues</h2>
+        <p>
+          <strong>Stacks</strong> operate on a Last-In-First-Out (LIFO) basis,
+          while <strong>Queues</strong> use a First-In-First-Out (FIFO)
+          approach. They are used for managing function calls, buffering, and
+          more.
+        </p>
+        <h3>Comparison Table: Arrays vs. Linked Lists</h3>
+        <table>
+          <tr>
+            <th>Property</th>
+            <th>Array</th>
+            <th>Linked List</th>
+          </tr>
+          <tr>
+            <td>Memory</td>
+            <td>Contiguous</td>
+            <td>Non-contiguous</td>
+          </tr>
+          <tr>
+            <td>Access</td>
+            <td>O(1) random access</td>
+            <td>O(n) sequential access</td>
+          </tr>
+          <tr>
+            <td>Insertion/Deletion</td>
+            <td>Costly in the middle</td>
+            <td>Efficient at beginning/end</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- Chapter 3: Advanced Data Structures -->
+      <section id="chapter3">
+        <h1>Chapter 3: Advanced Data Structures</h1>
+        <h2>Trees</h2>
+        <p>
+          Trees (such as binary trees and binary search trees) represent
+          hierarchical data. They allow efficient searching, insertion, and
+          deletion.
+        </p>
+        <h2>Graphs</h2>
+        <p>
+          Graphs consist of nodes (vertices) connected by edges. They are used
+          to model networks like social connections or maps.
+        </p>
+        <h2>Heaps and Hash Tables</h2>
+        <p>
+          <strong>Heaps</strong> are specialized trees useful for priority
+          queues, and <strong>Hash Tables</strong> provide fast data retrieval
+          using keys.
+        </p>
+      </section>
+
+      <!-- Chapter 4: Algorithms -->
+      <section id="chapter4">
+        <h1>Chapter 4: Algorithms</h1>
+        <h2>Sorting Algorithms</h2>
+        <p>
+          Sorting algorithms, such as QuickSort, MergeSort, and Bubble Sort,
+          organize data in a particular order.
+        </p>
+        <h2>Searching Algorithms</h2>
+        <p>
+          Searching algorithms like linear search and binary search help locate
+          specific elements in data.
+        </p>
+        <p>
+          Understanding these algorithms will help you write code that
+          efficiently processes large datasets.
+        </p>
+      </section>
+
+      <!-- Chapter 5: JavaScript Code Examples -->
+      <section id="chapter5">
+        <h1>Chapter 5: JavaScript Code Examples for DSA</h1>
+        <p>
+          Below is an example of a simple <strong>Stack</strong> implementation
+          in JavaScript. This code demonstrates how to create a stack, add
+          (push) items, remove (pop) items, and check the top item.
+        </p>
+        <pre><code>
+// JavaScript Stack Implementation
+class Stack {
+  constructor() {
+    this.items = [];
+  }
+  // Adds an element to the top of the stack
+  push(element) {
+    this.items.push(element);
+  }
+  // Removes and returns the top element of the stack
+  pop() {
+    if (this.isEmpty()) {
+      return "Stack is empty";
+    }
+    return this.items.pop();
+  }
+  // Returns the top element without removing it
+  peek() {
+    if (this.isEmpty()) {
+      return "No elements in the stack";
+    }
+    return this.items[this.items.length - 1];
+  }
+  // Checks if the stack is empty
+  isEmpty() {
+    return this.items.length === 0;
+  }
+  // Returns the number of elements in the stack
+  size() {
+    return this.items.length;
+  }
+}
+
+// Example usage:
+let myStack = new Stack();
+myStack.push(10);
+myStack.push(20);
+myStack.push(30);
+console.log("Top element:", myStack.peek()); // Output: Top element: 30
+console.log("Removed element:", myStack.pop()); // Output: Removed element: 30
+console.log("Stack size:", myStack.size()); // Output: Stack size: 2
+      </code></pre>
+        <p>
+          <em>Explanation:</em> This <code>Stack</code> class uses an array to
+          store elements. The <code>push()</code> method adds an element,
+          <code>pop()</code> removes the last element (while checking for
+          underflow), and <code>peek()</code> shows the last element. This is a
+          simple yet effective way to demonstrate one of the core data
+          structures.
+        </p>
+      </section>
+
+      <!-- Chapter 6: Complexity Analysis -->
+      <section id="chapter6">
+        <h1>Chapter 6: Complexity Analysis</h1>
+        <p>
+          Big O notation is used to describe the performance or complexity of an
+          algorithm.
+        </p>
+        <ul>
+          <li>
+            <strong>O(1):</strong> Constant time – the algorithm’s performance
+            is independent of the input size.
+          </li>
+          <li>
+            <strong>O(n):</strong> Linear time – the performance grows linearly
+            with the input size.
+          </li>
+          <li>
+            <strong>O(log n):</strong> Logarithmic time – typical in algorithms
+            that divide the input (like binary search).
+          </li>
+          <li>
+            <strong>O(n<sup>2</sup>):</strong> Quadratic time – common with
+            nested loops, and less efficient for large datasets.
+          </li>
+        </ul>
+        <p>
+          Choosing the right data structure and algorithm is critical to
+          achieving optimal performance.
+        </p>
+      </section>
+
+      <!-- Chapter 7: Conclusion & Future Trends -->
+      <section id="chapter7">
+        <h1>Chapter 7: Conclusion & Future Trends</h1>
+        <p>
+          In this guide, we introduced the core concepts of Data Structures and
+          Algorithms (DSA), from basic structures like arrays and linked lists
+          to advanced topics like trees, graphs, and algorithm complexity.
+        </p>
+        <p>
+          As you continue your journey in DSA, remember that practice and
+          continuous learning are key. Explore different implementations, solve
+          challenges, and stay updated on emerging trends.
+        </p>
+        <p>
+          Future trends include increased use of DSA in machine learning, big
+          data processing, and real-time applications.
+        </p>
+      </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+      <p>&copy; 2025 Foundations and Advances in DSA. All rights reserved.</p>
+    </footer>
+
+    <!-- ===== JavaScript for Sidebar Interaction ===== -->
+    <script>
+      // Function to toggle the sidebar open/close
+      function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        if (sidebar.style.left === "0px") {
+          sidebar.style.left = "-" + sidebar.offsetWidth + "px";
+        } else {
+          sidebar.style.left = "0px";
+        }
+      }
+    </script>
+  </body>
+</html>

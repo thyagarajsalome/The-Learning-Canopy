@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundations and Advances in Computer Science</title>
+    <style>
+      /* ===== Global Reset and Base Styles ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f9f9f9;
+      }
+
+      /* ===== Sidebar Styles ===== */
+      .sidebar {
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        z-index: 1001;
+        top: 0;
+        left: -250px; /* Hidden by default */
+        background: #004080;
+        color: #fff;
+        overflow-y: auto;
+        transition: 0.3s;
+        padding-top: 60px;
+      }
+      .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 1.2em;
+        color: #fff;
+        display: block;
+        transition: 0.3s;
+      }
+      .sidebar a:hover {
+        background: #003060;
+      }
+      .sidebar .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.5em;
+        cursor: pointer;
+      }
+
+      /* ===== Sidebar Toggle Button ===== */
+      #sidebar-toggle {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1002;
+        font-size: 1.5em;
+        background: #004080;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      /* ===== Main Content Styles ===== */
+      main {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+        transition: margin-left 0.3s;
+      }
+      section {
+        margin-bottom: 50px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      section h1,
+      section h2,
+      section h3 {
+        margin-bottom: 15px;
+        color: #004080;
+      }
+      section p,
+      section li {
+        margin-bottom: 15px;
+      }
+      section ul {
+        list-style-type: disc;
+        margin-left: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ccc;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+
+      /* ===== Footer Styles ===== */
+      footer {
+        background: #004080;
+        color: #fff;
+        text-align: center;
+        padding: 15px 20px;
+        margin-top: 20px;
+      }
+
+      /* ===== Responsive Adjustments ===== */
+      @media screen and (max-width: 768px) {
+        #sidebar-toggle {
+          padding: 8px 12px;
+          font-size: 1.2em;
+        }
+        .sidebar {
+          width: 200px;
+          left: -200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== Sidebar ===== -->
+    <div id="sidebar" class="sidebar">
+      <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+      <a href="#toc" onclick="toggleSidebar()">Home</a>
+      <a href="#chapter1" onclick="toggleSidebar()">Chapter 1: Introduction</a>
+      <a href="#chapter2" onclick="toggleSidebar()"
+        >Chapter 2: Hardware &amp; Software</a
+      >
+      <a href="#chapter3" onclick="toggleSidebar()"
+        >Chapter 3: Data Structures</a
+      >
+      <a href="#chapter4" onclick="toggleSidebar()"
+        >Chapter 4: Operating Systems</a
+      >
+      <a href="#chapter5" onclick="toggleSidebar()">Chapter 5: Databases</a>
+      <a href="#chapter6" onclick="toggleSidebar()">Chapter 6: Software Eng.</a>
+      <a href="#chapter7" onclick="toggleSidebar()">Chapter 7: Theory</a>
+      <a href="#chapter8" onclick="toggleSidebar()">Chapter 8: AI &amp; ML</a>
+      <a href="#chapter9" onclick="toggleSidebar()"
+        >Chapter 9: Advanced Topics</a
+      >
+      <a href="#chapter10" onclick="toggleSidebar()">Chapter 10: Conclusion</a>
+    </div>
+
+    <!-- ===== Sidebar Toggle Button ===== -->
+    <button id="sidebar-toggle" onclick="toggleSidebar()">&#9776;</button>
+
+    <!-- ===== Main Content ===== -->
+    <main>
+      <!-- Table of Contents Section -->
+      <section id="toc">
+        <h1>Foundations and Advances in Computer Science</h1>
+        <h2>Table of Contents</h2>
+        <ul>
+          <li>
+            <a href="#chapter1">Chapter 1: Introduction to Computer Science</a>
+          </li>
+          <li>
+            <a href="#chapter2"
+              >Chapter 2: Hardware and Software Fundamentals</a
+            >
+          </li>
+          <li>
+            <a href="#chapter3">Chapter 3: Data Structures and Algorithms</a>
+          </li>
+          <li>
+            <a href="#chapter4">Chapter 4: Operating Systems and Networking</a>
+          </li>
+          <li>
+            <a href="#chapter5"
+              >Chapter 5: Database Systems and Information Retrieval</a
+            >
+          </li>
+          <li>
+            <a href="#chapter6"
+              >Chapter 6: Software Engineering and Development</a
+            >
+          </li>
+          <li><a href="#chapter7">Chapter 7: Theory of Computation</a></li>
+          <li>
+            <a href="#chapter8"
+              >Chapter 8: Artificial Intelligence and Machine Learning</a
+            >
+          </li>
+          <li>
+            <a href="#chapter9"
+              >Chapter 9: Advanced Topics in Computer Science</a
+            >
+          </li>
+          <li>
+            <a href="#chapter10"
+              >Chapter 10: Conclusion and Future Directions</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <!-- Chapter 1: Introduction to Computer Science -->
+      <section id="chapter1">
+        <h1>Chapter 1: Introduction to Computer Science</h1>
+        <h2>1.1 What Is Computer Science?</h2>
+        <p>
+          Computer Science is the study of algorithmic processes, computational
+          machines, and computation itself. It encompasses both theoretical
+          studies and practical issues.
+        </p>
+        <h2>1.2 Brief History of Computer Science</h2>
+        <p>
+          Modern computer science began with formal logic and mathematics. Key
+          milestones include:
+        </p>
+        <ul>
+          <li>
+            <strong>1936:</strong> Turing’s paper laid the groundwork for
+            computation theory.
+          </li>
+          <li>
+            <strong>1940s:</strong> Development of early computers like ENIAC
+            and Colossus.
+          </li>
+          <li>
+            <strong>1950s–1960s:</strong> Development of programming languages
+            and academic establishment of computer science.
+          </li>
+        </ul>
+        <h3>Milestones in Computer Science History</h3>
+        <table>
+          <tr>
+            <th>Year</th>
+            <th>Milestone</th>
+          </tr>
+          <tr>
+            <td>1936</td>
+            <td>
+              Turing’s paper on computable numbers and the Turing Machine
+              concept.
+            </td>
+          </tr>
+          <tr>
+            <td>1945</td>
+            <td>
+              Development of the ENIAC – one of the first general-purpose
+              computers.
+            </td>
+          </tr>
+          <tr>
+            <td>1950s</td>
+            <td>
+              Emergence of high-level programming languages and formalized
+              theory.
+            </td>
+          </tr>
+          <tr>
+            <td>1960s</td>
+            <td>
+              Establishment of Computer Science departments at major
+              universities.
+            </td>
+          </tr>
+          <tr>
+            <td>1980s</td>
+            <td>Rise of personal computing.</td>
+          </tr>
+          <tr>
+            <td>1990s</td>
+            <td>The Internet revolution transforms global communication.</td>
+          </tr>
+        </table>
+        <h2>1.3 Impact on Society</h2>
+        <p>
+          Computer Science has transformed nearly every aspect of modern life,
+          enabling innovations in communication, medicine, finance, and more.
+        </p>
+      </section>
+
+      <!-- Chapter 2: Hardware and Software Fundamentals -->
+      <section id="chapter2">
+        <h1>Chapter 2: Hardware and Software Fundamentals</h1>
+        <h2>2.1 Computer Architecture and Hardware Components</h2>
+        <p>
+          Understanding hardware is essential. Key components include the CPU,
+          memory, storage devices, and I/O devices.
+        </p>
+        <ul>
+          <li>
+            <strong>CPU:</strong> Executes instructions and performs
+            calculations.
+          </li>
+          <li>
+            <strong>Memory:</strong>
+            <ul>
+              <li>
+                <strong>RAM:</strong> Temporary storage for active processes.
+              </li>
+              <li>
+                <strong>ROM:</strong> Non-volatile memory used for firmware.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Storage Devices:</strong> Hard drives, SSDs, etc., for
+            long-term data retention.
+          </li>
+          <li>
+            <strong>I/O Devices:</strong> Facilitate interaction through
+            keyboards, mice, monitors, and printers.
+          </li>
+        </ul>
+        <h3>Overview of Basic Hardware Components</h3>
+        <table>
+          <tr>
+            <th>Component</th>
+            <th>Function</th>
+          </tr>
+          <tr>
+            <td>CPU</td>
+            <td>Executes instructions and processes data.</td>
+          </tr>
+          <tr>
+            <td>RAM</td>
+            <td>Temporarily stores data for quick access.</td>
+          </tr>
+          <tr>
+            <td>Storage</td>
+            <td>Provides long-term data retention.</td>
+          </tr>
+          <tr>
+            <td>I/O Devices</td>
+            <td>Facilitate user-machine communication.</td>
+          </tr>
+        </table>
+        <h2>2.2 Software Fundamentals</h2>
+        <p>
+          Software is a set of instructions that tells hardware what to do. It
+          includes system software, application software, and programming
+          languages.
+        </p>
+        <h2>2.3 Introduction to Programming</h2>
+        <p>
+          Programming involves writing instructions for computers. Fundamental
+          concepts include syntax, control structures, data types, variables,
+          and problem solving.
+        </p>
+      </section>
+
+      <!-- Chapter 3: Data Structures and Algorithms -->
+      <section id="chapter3">
+        <h1>Chapter 3: Data Structures and Algorithms</h1>
+        <h2>3.1 Fundamental Data Structures</h2>
+        <p>
+          Data structures organize information for efficient access and
+          modification. Basic examples include arrays, linked lists, stacks, and
+          queues.
+        </p>
+        <h2>3.2 Advanced Data Structures</h2>
+        <p>
+          More complex problems may require advanced structures such as trees,
+          graphs, and heaps.
+        </p>
+        <h3>Comparison of Common Data Structures</h3>
+        <table>
+          <tr>
+            <th>Data Structure</th>
+            <th>Access Time</th>
+            <th>Insertion/Deletion Complexity</th>
+            <th>Usage Example</th>
+          </tr>
+          <tr>
+            <td>Array</td>
+            <td>O(1)</td>
+            <td>O(n) (if unsorted)</td>
+            <td>Fixed-size collections</td>
+          </tr>
+          <tr>
+            <td>Linked List</td>
+            <td>O(n)</td>
+            <td>O(1) at the head; O(n) elsewhere</td>
+            <td>Dynamic data collections</td>
+          </tr>
+          <tr>
+            <td>Stack</td>
+            <td>O(1)</td>
+            <td>O(1)</td>
+            <td>Function call management</td>
+          </tr>
+          <tr>
+            <td>Queue</td>
+            <td>O(1)</td>
+            <td>O(1)</td>
+            <td>Scheduling and buffering</td>
+          </tr>
+        </table>
+        <h2>3.3 Algorithms and Complexity</h2>
+        <p>
+          Algorithms are step-by-step procedures for solving problems, such as
+          sorting (QuickSort, MergeSort, Bubble Sort) and searching (binary
+          search, DFS). Their performance is analyzed using Big O notation.
+        </p>
+        <h2>3.4 Practical Considerations</h2>
+        <p>
+          When choosing data structures and algorithms, consider efficiency,
+          memory usage, and scalability.
+        </p>
+      </section>
+
+      <!-- Chapter 4: Operating Systems and Networking -->
+      <section id="chapter4">
+        <h1>Chapter 4: Operating Systems and Networking</h1>
+        <h2>4.1 Introduction to Operating Systems (OS)</h2>
+        <p>
+          An Operating System manages hardware and software resources through
+          process management, memory management, file systems, and security.
+        </p>
+        <h2>4.2 Networking Fundamentals</h2>
+        <p>
+          Networking connects computers for resource sharing and communication.
+          Key concepts include network topologies, protocols (e.g., TCP/IP), and
+          the OSI model.
+        </p>
+        <h3>OSI Model Layers and Their Functions</h3>
+        <table>
+          <tr>
+            <th>Layer (from bottom)</th>
+            <th>Function</th>
+          </tr>
+          <tr>
+            <td>1. Physical</td>
+            <td>Transmission and reception of raw bit streams.</td>
+          </tr>
+          <tr>
+            <td>2. Data Link</td>
+            <td>Node-to-node data transfer and error detection.</td>
+          </tr>
+          <tr>
+            <td>3. Network</td>
+            <td>Routing, addressing, and packet forwarding.</td>
+          </tr>
+          <tr>
+            <td>4. Transport</td>
+            <td>Reliable data transfer and error correction.</td>
+          </tr>
+          <tr>
+            <td>5. Session</td>
+            <td>Managing sessions between applications.</td>
+          </tr>
+          <tr>
+            <td>6. Presentation</td>
+            <td>Data translation, encryption, and compression.</td>
+          </tr>
+          <tr>
+            <td>7. Application</td>
+            <td>End-user services and network integration.</td>
+          </tr>
+        </table>
+        <h2>4.3 Security and Resource Management</h2>
+        <p>
+          Operating systems and networks address security through
+          authentication, encryption, and intrusion detection.
+        </p>
+      </section>
+
+      <!-- Chapter 5: Database Systems and Information Retrieval -->
+      <section id="chapter5">
+        <h1>Chapter 5: Database Systems and Information Retrieval</h1>
+        <h2>5.1 Database Fundamentals</h2>
+        <p>
+          Databases are structured collections of data used to efficiently store
+          and retrieve information. They include:
+        </p>
+        <ul>
+          <li>
+            <strong>Relational Databases:</strong> Use tables with defined
+            relationships.
+          </li>
+          <li>
+            <strong>NoSQL Databases:</strong> Designed for scalability and
+            unstructured data.
+          </li>
+        </ul>
+        <h2>5.2 Structured Query Language (SQL)</h2>
+        <p>
+          SQL is the standard language for interacting with relational
+          databases, including commands like SELECT, INSERT, UPDATE, DELETE, and
+          JOINs.
+        </p>
+        <h2>5.3 Information Retrieval and Big Data</h2>
+        <p>
+          Modern applications often require processing massive datasets using
+          techniques like indexing, distributed databases (e.g., Hadoop, Spark),
+          and data warehousing.
+        </p>
+        <h3>Comparison: Relational vs. NoSQL Databases</h3>
+        <table>
+          <tr>
+            <th>Aspect</th>
+            <th>Relational</th>
+            <th>NoSQL</th>
+          </tr>
+          <tr>
+            <td>Schema</td>
+            <td>Fixed, predefined</td>
+            <td>Dynamic, flexible</td>
+          </tr>
+          <tr>
+            <td>Scalability</td>
+            <td>Vertical (scale-up)</td>
+            <td>Horizontal (scale-out)</td>
+          </tr>
+          <tr>
+            <td>Data Integrity</td>
+            <td>High (ACID properties)</td>
+            <td>Varies (often BASE properties)</td>
+          </tr>
+          <tr>
+            <td>Use Case</td>
+            <td>Structured data</td>
+            <td>Large-scale, unstructured data</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- Chapter 6: Software Engineering and Development -->
+      <section id="chapter6">
+        <h1>Chapter 6: Software Engineering and Development</h1>
+        <h2>6.1 Software Development Life Cycle (SDLC)</h2>
+        <p>
+          The SDLC is a systematic process for building software that includes
+          requirement analysis, design, implementation, testing, deployment, and
+          maintenance.
+        </p>
+        <h2>6.2 Development Methodologies</h2>
+        <p>Common methodologies include:</p>
+        <ul>
+          <li>
+            <strong>Waterfall Model:</strong> A sequential process with defined
+            phases.
+          </li>
+          <li>
+            <strong>Agile Methodology:</strong> An iterative process emphasizing
+            flexibility and customer feedback.
+          </li>
+          <li>
+            <strong>DevOps:</strong> Integrates development and operations for
+            rapid, reliable releases.
+          </li>
+        </ul>
+        <h3>Comparison of Development Methodologies</h3>
+        <table>
+          <tr>
+            <th>Methodology</th>
+            <th>Characteristics</th>
+            <th>When to Use</th>
+          </tr>
+          <tr>
+            <td>Waterfall</td>
+            <td>Sequential, well-defined phases</td>
+            <td>Projects with clear, unchanging requirements</td>
+          </tr>
+          <tr>
+            <td>Agile</td>
+            <td>Iterative, flexible, customer-focused</td>
+            <td>Projects with evolving requirements</td>
+          </tr>
+          <tr>
+            <td>DevOps</td>
+            <td>Continuous integration and deployment</td>
+            <td>Fast-paced environments requiring rapid updates</td>
+          </tr>
+        </table>
+        <h2>6.3 Testing and Quality Assurance</h2>
+        <p>
+          Quality assurance involves unit testing, integration testing, system
+          testing, and user acceptance testing (UAT) to ensure software meets
+          requirements.
+        </p>
+      </section>
+
+      <!-- Chapter 7: Theory of Computation -->
+      <section id="chapter7">
+        <h1>Chapter 7: Theory of Computation</h1>
+        <h2>7.1 Automata Theory and Formal Languages</h2>
+        <p>
+          This field studies abstract machines and their capabilities, including
+          finite automata, context-free grammars, and regular expressions.
+        </p>
+        <h2>7.2 Turing Machines</h2>
+        <p>
+          A Turing Machine is a mathematical model of computation with an
+          infinite tape, a read/write head, and a set of states.
+        </p>
+        <h2>7.3 Computational Complexity</h2>
+        <p>
+          Complexity theory classifies problems by the resources required for
+          their solution:
+        </p>
+        <ul>
+          <li><strong>P:</strong> Problems solvable in polynomial time.</li>
+          <li>
+            <strong>NP:</strong> Problems whose solutions can be verified in
+            polynomial time.
+          </li>
+          <li><strong>NP-Complete:</strong> The hardest problems in NP.</li>
+        </ul>
+        <h3>Complexity Classes Overview</h3>
+        <table>
+          <tr>
+            <th>Class</th>
+            <th>Definition</th>
+            <th>Example Problem</th>
+          </tr>
+          <tr>
+            <td>P</td>
+            <td>Solvable in polynomial time</td>
+            <td>Sorting a list</td>
+          </tr>
+          <tr>
+            <td>NP</td>
+            <td>Solution verifiable in polynomial time</td>
+            <td>Boolean satisfiability (SAT)</td>
+          </tr>
+          <tr>
+            <td>NP-Complete</td>
+            <td>The hardest problems in NP</td>
+            <td>Traveling Salesman Problem</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- Chapter 8: Artificial Intelligence and Machine Learning -->
+      <section id="chapter8">
+        <h1>Chapter 8: Artificial Intelligence and Machine Learning</h1>
+        <h2>8.1 Introduction to Artificial Intelligence (AI)</h2>
+        <p>
+          AI is the simulation of human intelligence in machines, including
+          expert systems and robotics.
+        </p>
+        <h2>8.2 Machine Learning (ML) Basics</h2>
+        <p>
+          ML involves algorithms that enable computers to learn from data, such
+          as supervised, unsupervised, and reinforcement learning.
+        </p>
+        <h2>8.3 Deep Learning and Neural Networks</h2>
+        <p>
+          Deep learning uses multi-layered neural networks to model complex
+          patterns. Examples include CNNs for image processing and RNNs for
+          sequential data.
+        </p>
+        <h2>8.4 Ethical Considerations in AI</h2>
+        <p>
+          As AI becomes more pervasive, ethical issues such as bias, privacy,
+          and transparency must be addressed.
+        </p>
+        <h3>AI Techniques and Their Applications</h3>
+        <table>
+          <tr>
+            <th>Technique</th>
+            <th>Application</th>
+            <th>Key Considerations</th>
+          </tr>
+          <tr>
+            <td>Supervised Learning</td>
+            <td>Image recognition, spam detection</td>
+            <td>Requires labeled data</td>
+          </tr>
+          <tr>
+            <td>Unsupervised Learning</td>
+            <td>Market segmentation, anomaly detection</td>
+            <td>Interpretability of clusters</td>
+          </tr>
+          <tr>
+            <td>Deep Learning</td>
+            <td>Autonomous vehicles, speech recognition</td>
+            <td>High computational cost and large dataset needs</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- Chapter 9: Advanced Topics in Computer Science -->
+      <section id="chapter9">
+        <h1>Chapter 9: Advanced Topics in Computer Science</h1>
+        <h2>9.1 Distributed Systems and Cloud Computing</h2>
+        <p>
+          Distributed systems spread computation across multiple machines to
+          improve performance and reliability. Cloud computing provides
+          on‑demand resources with flexible pricing.
+        </p>
+        <h2>9.2 Quantum Computing</h2>
+        <p>
+          Quantum computing leverages quantum mechanics to process information
+          using qubits and quantum algorithms. Challenges include error
+          correction.
+        </p>
+        <h2>9.3 Cybersecurity</h2>
+        <p>
+          Cybersecurity protects systems from threats like malware, phishing,
+          and DDoS attacks through encryption and intrusion detection.
+        </p>
+        <h2>9.4 Future Trends and Research Directions</h2>
+        <p>
+          Emerging fields include edge computing, blockchain technology,
+          augmented/virtual reality, and the ethical implications of new
+          technologies.
+        </p>
+        <h3>Emerging Technologies Overview</h3>
+        <table>
+          <tr>
+            <th>Technology</th>
+            <th>Core Idea</th>
+            <th>Potential Impact</th>
+          </tr>
+          <tr>
+            <td>Distributed Systems</td>
+            <td>Multiple computers working together</td>
+            <td>Enhanced reliability and performance</td>
+          </tr>
+          <tr>
+            <td>Quantum Computing</td>
+            <td>Computation using quantum phenomena</td>
+            <td>Solving problems intractable for classical computers</td>
+          </tr>
+          <tr>
+            <td>Blockchain</td>
+            <td>Decentralized ledger technology</td>
+            <td>Increased security and transparency</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- Chapter 10: Conclusion and Future Directions -->
+      <section id="chapter10">
+        <h1>Chapter 10: Conclusion and Future Directions</h1>
+        <h2>10.1 Recap of Key Concepts</h2>
+        <p>
+          This guide covers the fundamentals, theories, and modern developments
+          in computer science.
+        </p>
+        <h2>10.2 Future Trends in Computer Science</h2>
+        <p>
+          Emerging trends include interdisciplinary applications, sustainable
+          computing, and the development of robust ethical frameworks.
+        </p>
+        <h2>10.3 Final Thoughts</h2>
+        <p>
+          The journey in computer science is ever-evolving. Stay curious and
+          keep learning!
+        </p>
+      </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+      <p>
+        &copy; 2025 Foundations and Advances in Computer Science. All rights
+        reserved.
+      </p>
+    </footer>
+
+    <!-- ===== JavaScript for Sidebar Interaction ===== -->
+    <script>
+      function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        // If sidebar is visible (left is 0px), hide it; otherwise, show it.
+        if (sidebar.style.left === "0px") {
+          sidebar.style.left = "-" + sidebar.offsetWidth + "px";
+        } else {
+          sidebar.style.left = "0px";
+        }
+      }
+    </script>
+  </body>
+</html>
