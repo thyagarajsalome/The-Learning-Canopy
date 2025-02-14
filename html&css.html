@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTML &amp; CSS Tutorial: From Basics to Advanced</title>
+    <style>
+      /* Global Styles */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+        line-height: 1.6;
+        color: #333;
+      }
+      .container {
+        display: flex;
+        min-height: 100vh;
+      }
+      /* Sidebar Styles */
+      .sidebar {
+        width: 250px;
+        background: #333;
+        color: #fff;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+      .sidebar li {
+        margin-bottom: 10px;
+      }
+      .sidebar a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        padding: 8px;
+        border-radius: 4px;
+      }
+      .sidebar a:hover {
+        background: #575757;
+      }
+      details summary {
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 4px;
+      }
+      details summary:hover {
+        background: #575757;
+      }
+      details ul {
+        margin-left: 15px;
+        padding: 0;
+      }
+      /* Content Styles */
+      .content {
+        flex: 1;
+        padding: 20px;
+        background: #fff;
+      }
+      .content section {
+        margin-bottom: 40px;
+      }
+      pre {
+        background: #eee;
+        padding: 10px;
+        overflow-x: auto;
+      }
+      code {
+        font-family: Consolas, monospace;
+      }
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+        .sidebar {
+          width: 100%;
+          display: none;
+        }
+        .sidebar.active {
+          display: block;
+        }
+        .toggle-btn {
+          display: block;
+          background: #333;
+          color: #fff;
+          padding: 10px;
+          border: none;
+          width: 100%;
+          text-align: left;
+          cursor: pointer;
+        }
+      }
+      .toggle-btn {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Toggle Button -->
+    <button class="toggle-btn" id="toggle-btn">☰ Menu</button>
+
+    <div class="container">
+      <!-- Sidebar Navigation -->
+      <nav class="sidebar" id="sidebar">
+        <ul>
+          <!-- Chapter 1: HTML Basics -->
+          <li>
+            <details open>
+              <summary>Chapter 1: HTML Basics</summary>
+              <ul>
+                <li><a href="#what-is-html">What is HTML?</a></li>
+                <li><a href="#html-structure">HTML Document Structure</a></li>
+                <li><a href="#html-tags">Common HTML Tags</a></li>
+                <li><a href="#html-attributes">HTML Attributes</a></li>
+                <li><a href="#html-forms">Forms and Inputs</a></li>
+              </ul>
+            </details>
+          </li>
+          <!-- Chapter 2: CSS Basics -->
+          <li>
+            <details>
+              <summary>Chapter 2: CSS Basics</summary>
+              <ul>
+                <li><a href="#what-is-css">What is CSS?</a></li>
+                <li>
+                  <a href="#css-styles">Inline, Internal &amp; External CSS</a>
+                </li>
+                <li>
+                  <a href="#css-selectors">CSS Selectors &amp; Properties</a>
+                </li>
+                <li><a href="#css-box-model">The Box Model</a></li>
+                <li>
+                  <a href="#css-colors-fonts"
+                    >Colors, Fonts &amp; Text Styles</a
+                  >
+                </li>
+              </ul>
+            </details>
+          </li>
+          <!-- Chapter 3: Advanced HTML & CSS -->
+          <li>
+            <details>
+              <summary>Chapter 3: Advanced HTML &amp; CSS</summary>
+              <ul>
+                <li>
+                  <a href="#semantic-html">Semantic HTML &amp; Accessibility</a>
+                </li>
+                <li>
+                  <a href="#responsive-design"
+                    >Responsive Design &amp; Media Queries</a
+                  >
+                </li>
+                <li><a href="#flexbox-grid">Flexbox &amp; CSS Grid</a></li>
+                <li><a href="#transitions">Transitions &amp; Animations</a></li>
+                <li>
+                  <a href="#css-variables">CSS Custom Properties (Variables)</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <!-- Chapter 4: JavaScript Integration -->
+          <li>
+            <details>
+              <summary>Chapter 4: JavaScript Integration</summary>
+              <ul>
+                <li><a href="#dom-manipulation">DOM Manipulation</a></li>
+                <li>
+                  <a href="#interactive-examples">Interactive Examples</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main Content Area -->
+      <div class="content">
+        <!-- Chapter 1: HTML Basics -->
+        <section id="what-is-html">
+          <h2>Chapter 1: HTML Basics - What is HTML?</h2>
+          <p>
+            HTML (HyperText Markup Language) is the standard markup language for
+            creating web pages. It describes the structure of a webpage using
+            elements and tags.
+          </p>
+        </section>
+
+        <section id="html-structure">
+          <h2>HTML Document Structure</h2>
+          <p>
+            A basic HTML document consists of the following elements:
+            <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>,
+            <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code>. These
+            elements structure your document.
+          </p>
+          <h3>Example: Basic HTML Structure</h3>
+          <pre><code class="html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My First HTML Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;p&gt;This is a basic HTML document.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+        </code></pre>
+          <p>
+            This example shows how to set up a simple HTML page with a title,
+            heading, and paragraph.
+          </p>
+        </section>
+
+        <section id="html-tags">
+          <h2>Common HTML Tags</h2>
+          <p>
+            HTML provides a variety of tags to format and structure content.
+            Some common tags include:
+          </p>
+          <ul>
+            <li>
+              <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> for headings
+            </li>
+            <li><code>&lt;p&gt;</code> for paragraphs</li>
+            <li><code>&lt;a&gt;</code> for hyperlinks</li>
+            <li><code>&lt;img&gt;</code> for images</li>
+            <li>
+              <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, and
+              <code>&lt;li&gt;</code> for lists
+            </li>
+          </ul>
+          <h3>Example: Using Common Tags</h3>
+          <pre><code class="html">
+&lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+&lt;p&gt;This paragraph explains the content of the site.&lt;/p&gt;
+&lt;a href="https://example.com"&gt;Visit Example.com&lt;/a&gt;
+        </code></pre>
+        </section>
+
+        <section id="html-attributes">
+          <h2>HTML Attributes</h2>
+          <p>
+            Attributes provide additional information about HTML elements. They
+            are added inside the opening tag.
+          </p>
+          <h3>Example: Using Attributes</h3>
+          <pre><code class="html">
+&lt;img src="image.jpg" alt="A descriptive text"&gt;
+&lt;a href="https://example.com" target="_blank"&gt;Open Example in a new tab&lt;/a&gt;
+        </code></pre>
+        </section>
+
+        <section id="html-forms">
+          <h2>HTML Forms and Inputs</h2>
+          <p>
+            Forms are used to collect user input. They include elements like
+            <code>&lt;form&gt;</code>, <code>&lt;input&gt;</code>,
+            <code>&lt;textarea&gt;</code>, and <code>&lt;button&gt;</code>.
+          </p>
+          <h3>Example: A Simple Form</h3>
+          <pre><code class="html">
+&lt;form action="/submit" method="post"&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+        </code></pre>
+        </section>
+
+        <!-- Chapter 2: CSS Basics -->
+        <section id="what-is-css">
+          <h2>Chapter 2: CSS Basics - What is CSS?</h2>
+          <p>
+            CSS (Cascading Style Sheets) is used to style and layout web pages.
+            It allows you to control the appearance of HTML elements.
+          </p>
+        </section>
+
+        <section id="css-styles">
+          <h2>Inline, Internal &amp; External CSS</h2>
+          <p>There are three ways to apply CSS to your HTML:</p>
+          <ul>
+            <li>
+              <strong>Inline CSS:</strong> Written directly in an HTML tag using
+              the <code>style</code> attribute.
+            </li>
+            <li>
+              <strong>Internal CSS:</strong> Written inside a
+              <code>&lt;style&gt;</code> tag within the HTML document.
+            </li>
+            <li>
+              <strong>External CSS:</strong> Written in a separate .css file
+              that is linked to your HTML document.
+            </li>
+          </ul>
+          <h3>Example: Inline and Internal CSS</h3>
+          <pre><code class="html">
+&lt;!-- Inline CSS Example --&gt;
+&lt;p style="color: blue;"&gt;This text is blue.&lt;/p&gt;
+
+&lt;!-- Internal CSS Example --&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    p {
+      font-size: 18px;
+      color: green;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+        </code></pre>
+        </section>
+
+        <section id="css-selectors">
+          <h2>CSS Selectors and Properties</h2>
+          <p>
+            CSS selectors target HTML elements, and properties define the
+            styles. For example, the <code>color</code> property sets the text
+            color.
+          </p>
+          <h3>Example: Basic CSS Styling</h3>
+          <pre><code class="css">
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #007BFF;
+}
+        </code></pre>
+        </section>
+
+        <section id="css-box-model">
+          <h2>The CSS Box Model</h2>
+          <p>
+            The box model explains how an element's dimensions are determined by
+            its content, padding, border, and margin.
+          </p>
+          <h3>Example: Box Model</h3>
+          <pre><code class="css">
+div {
+  width: 300px;
+  padding: 20px;
+  border: 5px solid #333;
+  margin: 10px;
+}
+        </code></pre>
+        </section>
+
+        <section id="css-colors-fonts">
+          <h2>Colors, Fonts &amp; Text Styles</h2>
+          <p>
+            CSS allows you to control text appearance by setting properties like
+            font size, color, and family.
+          </p>
+          <h3>Example: Text Styling</h3>
+          <pre><code class="css">
+p {
+  font-size: 16px;
+  color: #555;
+  font-family: 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+}
+        </code></pre>
+        </section>
+
+        <!-- Chapter 3: Advanced HTML & CSS -->
+        <section id="semantic-html">
+          <h2>
+            Chapter 3: Advanced HTML &amp; CSS - Semantic HTML &amp;
+            Accessibility
+          </h2>
+          <p>
+            Semantic HTML uses meaningful tags (such as
+            <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
+            <code>&lt;article&gt;</code>, and <code>&lt;footer&gt;</code>) to
+            clearly define the different parts of a webpage. This improves
+            accessibility and SEO.
+          </p>
+          <h3>Example: Semantic HTML Structure</h3>
+          <pre><code class="html">
+&lt;header&gt;
+  &lt;h1&gt;My Website&lt;/h1&gt;
+&lt;/header&gt;
+&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;article&gt;
+  &lt;p&gt;Main content goes here.&lt;/p&gt;
+&lt;/article&gt;
+&lt;footer&gt;
+  &lt;p&gt;Copyright © 2025&lt;/p&gt;
+&lt;/footer&gt;
+        </code></pre>
+        </section>
+
+        <section id="responsive-design">
+          <h2>Responsive Design &amp; Media Queries</h2>
+          <p>
+            Responsive design ensures that your website adapts to different
+            screen sizes. Media queries let you apply CSS styles based on device
+            characteristics.
+          </p>
+          <h3>Example: Media Query</h3>
+          <pre><code class="css">
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    display: none;
+  }
+  .sidebar.active {
+    display: block;
+  }
+}
+        </code></pre>
+        </section>
+
+        <section id="flexbox-grid">
+          <h2>Flexbox &amp; CSS Grid</h2>
+          <p>
+            Flexbox and Grid are modern CSS layout modules that allow you to
+            build responsive layouts with ease.
+          </p>
+          <h3>Example: Flexbox Layout</h3>
+          <pre><code class="css">
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+.item {
+  flex: 1;
+  margin: 10px;
+}
+        </code></pre>
+          <h3>Example: CSS Grid Layout</h3>
+          <pre><code class="css">
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+        </code></pre>
+        </section>
+
+        <section id="transitions">
+          <h2>Transitions &amp; Animations</h2>
+          <p>
+            CSS transitions and animations let you animate changes in CSS
+            properties to create engaging user experiences.
+          </p>
+          <h3>Example: CSS Transition</h3>
+          <pre><code class="css">
+.button {
+  background-color: #007BFF;
+  transition: background-color 0.3s ease;
+}
+.button:hover {
+  background-color: #0056b3;
+}
+        </code></pre>
+        </section>
+
+        <section id="css-variables">
+          <h2>CSS Custom Properties (Variables)</h2>
+          <p>
+            CSS variables allow you to store and reuse values throughout your
+            stylesheet, making it easier to maintain consistent styling.
+          </p>
+          <h3>Example: Using CSS Variables</h3>
+          <pre><code class="css">
+:root {
+  --primary-color: #007BFF;
+  --secondary-color: #6c757d;
+}
+
+body {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+a {
+  color: var(--primary-color);
+}
+        </code></pre>
+        </section>
+
+        <!-- Chapter 4: JavaScript Integration -->
+        <section id="dom-manipulation">
+          <h2>Chapter 4: JavaScript Integration - DOM Manipulation</h2>
+          <p>
+            JavaScript can manipulate the DOM to dynamically change HTML and
+            CSS. This enables interactive web experiences.
+          </p>
+          <h3>Example: Changing Element Content</h3>
+          <pre><code class="javascript">
+// HTML Element: &lt;div id="demo"&gt;Original Content&lt;/div&gt;
+document.getElementById("demo").innerText = "Updated Content via JavaScript";
+        </code></pre>
+          <p>
+            In this example, JavaScript selects an element with the id "demo"
+            and updates its text content.
+          </p>
+        </section>
+
+        <section id="interactive-examples">
+          <h2>Interactive Examples with JavaScript</h2>
+          <p>
+            JavaScript can also add interactivity to your website. For example,
+            you can toggle the sidebar on mobile devices.
+          </p>
+          <h3>Example: Toggle Sidebar</h3>
+          <pre><code class="javascript">
+// Toggle sidebar visibility on mobile devices
+const toggleBtn = document.getElementById("toggle-btn");
+const sidebar = document.getElementById("sidebar");
+
+toggleBtn.addEventListener("click", function() {
+  sidebar.classList.toggle("active");
+});
+        </code></pre>
+          <p>
+            When the "Menu" button is clicked, the sidebar's "active" class is
+            toggled to show or hide it.
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      // Mobile Toggle Button for sidebar
+      const toggleBtn = document.getElementById("toggle-btn");
+      const sidebar = document.getElementById("sidebar");
+
+      toggleBtn.addEventListener("click", function () {
+        sidebar.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
