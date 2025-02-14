@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Web Development Tutorial</title>
+    <style>
+      /* --- Basic Reset --- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background: #f4f4f4;
+      }
+      /* --- Layout --- */
+      .container {
+        display: flex;
+        min-height: 100vh;
+      }
+      /* --- Sidebar --- */
+      .sidebar {
+        background: #333;
+        color: #fff;
+        width: 250px;
+        padding: 20px;
+      }
+      .sidebar ul {
+        list-style: none;
+      }
+      .sidebar li {
+        margin-bottom: 10px;
+      }
+      .sidebar a,
+      .sidebar button {
+        display: block;
+        text-decoration: none;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        outline: none;
+      }
+      .sidebar a:hover,
+      .sidebar button:hover {
+        background: #575757;
+      }
+      .dropdown-container {
+        display: none;
+        background-color: #444;
+        padding-left: 15px;
+      }
+      .dropdown-container a {
+        padding: 8px 10px;
+      }
+      /* --- Main Content --- */
+      .content {
+        flex: 1;
+        padding: 20px;
+        background: #fff;
+      }
+      section {
+        margin-bottom: 40px;
+      }
+      section h2 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+      section h3 {
+        margin: 15px 0 5px;
+        color: #555;
+      }
+      pre {
+        background: #eee;
+        padding: 10px;
+        overflow: auto;
+        margin-bottom: 10px;
+      }
+      code {
+        font-family: Consolas, monospace;
+      }
+      /* --- Responsive Design --- */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+        .sidebar {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar Navigation with Dropdown Lists -->
+      <nav class="sidebar">
+        <ul>
+          <li>
+            <button class="dropdown-btn">Chapter 1: HTML</button>
+            <div class="dropdown-container">
+              <a href="#html-intro">Introduction</a>
+              <a href="#html-elements">Elements &amp; Structure</a>
+              <a href="#html-forms">Forms &amp; Media</a>
+            </div>
+          </li>
+          <li>
+            <button class="dropdown-btn">Chapter 2: CSS</button>
+            <div class="dropdown-container">
+              <a href="#css-intro">Introduction</a>
+              <a href="#css-selectors">Selectors &amp; Properties</a>
+              <a href="#css-layout">Flexbox &amp; Grid</a>
+              <a href="#css-responsive">Responsive Design</a>
+            </div>
+          </li>
+          <li>
+            <button class="dropdown-btn">Chapter 3: JavaScript</button>
+            <div class="dropdown-container">
+              <a href="#js-basics">Basics &amp; Syntax</a>
+              <a href="#js-dom">DOM Manipulation</a>
+              <a href="#js-events">Event Handling</a>
+              <a href="#js-advanced">Advanced Concepts</a>
+            </div>
+          </li>
+          <li>
+            <button class="dropdown-btn">
+              Chapter 4: Tools &amp; Optimization
+            </button>
+            <div class="dropdown-container">
+              <a href="#build-tools">Build Tools</a>
+              <a href="#performance">Performance Optimization</a>
+              <a href="#accessibility">Accessibility</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main Content Sections -->
+      <main class="content">
+        <!-- Chapter 1: HTML -->
+        <section id="html-intro">
+          <h2>Chapter 1: HTML - Introduction</h2>
+          <p>
+            HTML (HyperText Markup Language) is the standard markup language for
+            creating web pages. It structures the content on the web.
+          </p>
+          <h3>Example: Basic HTML Structure</h3>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My First Web Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;p&gt;This is a simple HTML page.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <p>
+            <strong>Explanation:</strong> This code defines a basic HTML
+            document with a DOCTYPE declaration, head, and body sections. The
+            <code>&lt;h1&gt;</code> tag defines a main heading and the
+            <code>&lt;p&gt;</code> tag defines a paragraph.
+          </p>
+        </section>
+
+        <section id="html-elements">
+          <h2>Chapter 1: HTML - Elements &amp; Structure</h2>
+          <p>
+            HTML consists of a variety of elements defined by tags. Elements can
+            have attributes that provide additional information.
+          </p>
+          <h3>Example: Using Attributes</h3>
+          <pre><code>&lt;a href="https://www.example.com" target="_blank"&gt;Visit Example&lt;/a&gt;</code></pre>
+          <p>
+            <strong>Explanation:</strong> The <code>&lt;a&gt;</code> tag creates
+            a hyperlink. The <code>href</code> attribute specifies the
+            destination URL, and the <code>target="_blank"</code> attribute
+            makes the link open in a new tab.
+          </p>
+        </section>
+
+        <section id="html-forms">
+          <h2>Chapter 1: HTML - Forms &amp; Media</h2>
+          <p>
+            Forms allow user input. HTML forms support various input types,
+            making it possible to capture different kinds of data.
+          </p>
+          <h3>Example: Simple Form</h3>
+          <pre><code>&lt;form action="/submit" method="POST"&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name"&gt;
+  &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;</code></pre>
+          <p>
+            <strong>Explanation:</strong> This form collects a user's name and
+            submits the data using the POST method. The
+            <code>&lt;label&gt;</code> tag improves accessibility by associating
+            text with form controls.
+          </p>
+        </section>
+
+        <!-- Chapter 2: CSS -->
+        <section id="css-intro">
+          <h2>Chapter 2: CSS - Introduction</h2>
+          <p>
+            CSS (Cascading Style Sheets) is used to style and layout web pages.
+            It allows you to apply styles to HTML elements.
+          </p>
+          <h3>Example: Basic CSS</h3>
+          <pre><code>body {
+  background-color: #f0f0f0;
+  color: #333;
+  font-family: Arial, sans-serif;
+}</code></pre>
+          <p>
+            <strong>Explanation:</strong> This CSS snippet sets a background
+            color, text color, and font for the entire page.
+          </p>
+        </section>
+
+        <section id="css-selectors">
+          <h2>Chapter 2: CSS - Selectors &amp; Properties</h2>
+          <p>
+            CSS selectors target HTML elements. Properties define the styling
+            applied to those elements.
+          </p>
+          <h3>Example: Class and ID Selectors</h3>
+          <pre><code>/* ID selector */
+#header {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Class selector */
+.button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #007BFF;
+  color: #fff;
+}</code></pre>
+          <p>
+            <strong>Explanation:</strong> The ID selector targets an element
+            with a specific ID, while the class selector targets all elements
+            with a specified class attribute.
+          </p>
+        </section>
+
+        <section id="css-layout">
+          <h2>Chapter 2: CSS - Flexbox &amp; Grid</h2>
+          <p>
+            Flexbox and Grid are powerful layout systems in CSS for designing
+            responsive, modern layouts.
+          </p>
+          <h3>Example: Flexbox Layout</h3>
+          <pre><code>/* Flexbox Container */
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.item {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 20px;
+  margin: 10px;
+}</code></pre>
+          <p>
+            <strong>Explanation:</strong> This code creates a flex container
+            that centers its items and distributes space around them.
+          </p>
+        </section>
+
+        <section id="css-responsive">
+          <h2>Chapter 2: CSS - Responsive Design</h2>
+          <p>
+            Responsive design ensures web pages render well on different
+            devices. Media queries allow you to apply styles based on device
+            characteristics.
+          </p>
+          <h3>Example: Media Query</h3>
+          <pre><code>@media (max-width: 768px) {
+  body {
+    background-color: #e0e0e0;
+  }
+}</code></pre>
+          <p>
+            <strong>Explanation:</strong> This media query changes the
+            background color when the viewport width is 768px or less.
+          </p>
+        </section>
+
+        <!-- Chapter 3: JavaScript -->
+        <section id="js-basics">
+          <h2>Chapter 3: JavaScript - Basics &amp; Syntax</h2>
+          <p>
+            JavaScript is a programming language that enables interactive web
+            pages. It can manipulate the DOM, handle events, and much more.
+          </p>
+          <h3>Example: Hello World in JavaScript</h3>
+          <pre><code>console.log("Hello, World!");</code></pre>
+          <p>
+            <strong>Explanation:</strong> This code prints "Hello, World!" to
+            the browser's console.
+          </p>
+        </section>
+
+        <section id="js-dom">
+          <h2>Chapter 3: JavaScript - DOM Manipulation</h2>
+          <p>
+            The Document Object Model (DOM) represents the structure of a web
+            page. JavaScript can use the DOM to change the content, structure,
+            and style of a document.
+          </p>
+          <h3>Example: Changing Text Content</h3>
+          <pre><code>// HTML: &lt;p id="demo"&gt;Original Text&lt;/p&gt;
+document.getElementById("demo").textContent = "Updated Text";</code></pre>
+          <p>
+            <strong>Explanation:</strong> This code selects the paragraph
+            element with the ID "demo" and changes its text content.
+          </p>
+        </section>
+
+        <section id="js-events">
+          <h2>Chapter 3: JavaScript - Event Handling</h2>
+          <p>
+            JavaScript can respond to browser events such as clicks, mouse
+            movements, or key presses. This makes web pages interactive.
+          </p>
+          <h3>Example: Button Click Event</h3>
+          <pre><code>// HTML: &lt;button id="myButton"&gt;Click Me&lt;/button&gt;
+document.getElementById("myButton").addEventListener("click", function() {
+  alert("Button was clicked!");
+});</code></pre>
+          <p>
+            <strong>Explanation:</strong> This code adds an event listener to a
+            button so that when it’s clicked, an alert pops up.
+          </p>
+        </section>
+
+        <section id="js-advanced">
+          <h2>Chapter 3: JavaScript - Advanced Concepts</h2>
+          <p>
+            Modern JavaScript (ES6 and beyond) offers advanced features like
+            arrow functions, Promises, async/await, and modules that help build
+            robust applications.
+          </p>
+          <h3>Example: Arrow Functions &amp; Promises</h3>
+          <pre><code>// Define a function that returns a Promise using an arrow function
+const fetchData = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Data fetched successfully!");
+    }, 2000);
+  });
+};
+
+fetchData()
+  .then(message => console.log(message))
+  .catch(error => console.error(error));</code></pre>
+          <p>
+            <strong>Explanation:</strong> Here, an arrow function is used to
+            define a function that returns a Promise. The Promise simulates an
+            asynchronous operation (using <code>setTimeout</code>) and logs a
+            message when resolved.
+          </p>
+        </section>
+
+        <!-- Chapter 4: Tools & Optimization -->
+        <section id="build-tools">
+          <h2>Chapter 4: Tools &amp; Optimization - Build Tools</h2>
+          <p>
+            Build tools like Webpack, Babel, and NPM scripts help automate tasks
+            such as bundling, transpiling, and minifying your code.
+          </p>
+          <h3>Example: Basic NPM Script</h3>
+          <pre><code>{
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "build": "webpack --mode production"
+  }
+}</code></pre>
+          <p>
+            <strong>Explanation:</strong> This snippet from a
+            <code>package.json</code> file defines NPM scripts to start a
+            development server and build the project for production.
+          </p>
+        </section>
+
+        <section id="performance">
+          <h2>
+            Chapter 4: Tools &amp; Optimization - Performance Optimization
+          </h2>
+          <p>
+            Performance optimization involves strategies such as lazy loading,
+            code splitting, and image optimization to reduce load times and
+            improve user experience.
+          </p>
+          <h3>Example: Lazy Loading Images</h3>
+          <pre><code>&lt;img src="placeholder.jpg" data-src="actual-image.jpg" class="lazy"&gt;
+
+&lt;script&gt;
+  document.addEventListener("DOMContentLoaded", function() {
+    const lazyImages = document.querySelectorAll("img.lazy");
+    lazyImages.forEach(img => {
+      img.src = img.getAttribute("data-src");
+    });
+  });
+&lt;/script&gt;</code></pre>
+          <p>
+            <strong>Explanation:</strong> In this example, a placeholder image
+            is initially shown. Once the DOM is loaded, JavaScript replaces the
+            placeholder with the actual image source.
+          </p>
+        </section>
+
+        <section id="accessibility">
+          <h2>Chapter 4: Tools &amp; Optimization - Accessibility</h2>
+          <p>
+            Accessibility (a11y) ensures that your web content is usable by all
+            people, including those with disabilities. This involves using
+            semantic HTML, proper ARIA attributes, and ensuring keyboard
+            navigation.
+          </p>
+          <h3>Example: Accessible Navigation</h3>
+          <pre><code>&lt;nav aria-label="Main Navigation"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+          <p>
+            <strong>Explanation:</strong> This code provides navigation with an
+            ARIA label to help assistive technologies understand the purpose of
+            the section.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <!-- --- JavaScript for Sidebar Dropdown --- -->
+    <script>
+      const dropdowns = document.getElementsByClassName("dropdown-btn");
+      for (let i = 0; i < dropdowns.length; i++) {
+        dropdowns[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          const dropdownContent = this.nextElementSibling;
+          dropdownContent.style.display =
+            dropdownContent.style.display === "block" ? "none" : "block";
+        });
+      }
+    </script>
+  </body>
+</html>

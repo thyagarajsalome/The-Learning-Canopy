@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>React In-Depth Tutorial</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+    /* Layout */
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+    /* Sidebar */
+    .sidebar {
+      background: #2c3e50;
+      color: #ecf0f1;
+      width: 250px;
+      padding: 20px;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar li {
+      margin-bottom: 10px;
+    }
+    .sidebar a,
+    .sidebar button {
+      display: block;
+      text-decoration: none;
+      color: #ecf0f1;
+      padding: 10px;
+      border: none;
+      background: none;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+    }
+    .sidebar a:hover,
+    .sidebar button:hover {
+      background: #34495e;
+    }
+    .dropdown-container {
+      display: none;
+      background: #34495e;
+      padding-left: 15px;
+    }
+    .dropdown-container a {
+      padding: 8px 10px;
+    }
+    /* Main Content */
+    .content {
+      flex: 1;
+      padding: 20px;
+      background: #fff;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    section h2 {
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+    section h3 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      overflow: auto;
+      margin-bottom: 10px;
+    }
+    code {
+      font-family: Consolas, monospace;
+    }
+    /* Interactive Code Example */
+    .interactive-container {
+      margin: 10px 0;
+    }
+    .textarea-code {
+      width: 100%;
+      height: 150px;
+      font-family: Consolas, monospace;
+      padding: 10px;
+    }
+    .run-button {
+      margin-top: 5px;
+      padding: 8px 12px;
+      background: #27ae60;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    .output {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+      min-height: 50px;
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+      }
+    }
+  </style>
+  <!-- React, ReactDOM, and Babel -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar Navigation with Dropdowns -->
+    <nav class="sidebar">
+      <ul>
+        <li>
+          <button class="dropdown-btn">Chapter 1: Introduction to React</button>
+          <div class="dropdown-container">
+            <a href="#react-intro">What is React?</a>
+            <a href="#react-benefits">Why Use React?</a>
+          </div>
+        </li>
+        <li>
+          <button class="dropdown-btn">Chapter 2: JSX</button>
+          <div class="dropdown-container">
+            <a href="#jsx-intro">JSX Introduction</a>
+            <a href="#jsx-syntax">JSX Syntax &amp; Expressions</a>
+          </div>
+        </li>
+        <li>
+          <button class="dropdown-btn">Chapter 3: Components &amp; Props</button>
+          <div class="dropdown-container">
+            <a href="#components-intro">Functional Components</a>
+            <a href="#props-intro">Using Props</a>
+          </div>
+        </li>
+        <li>
+          <button class="dropdown-btn">Chapter 4: State &amp; Hooks</button>
+          <div class="dropdown-container">
+            <a href="#state-intro">useState Hook</a>
+            <a href="#effect-hook">useEffect Hook</a>
+          </div>
+        </li>
+        <li>
+          <button class="dropdown-btn">Chapter 5: Event Handling</button>
+          <div class="dropdown-container">
+            <a href="#event-handling">Handling Events in React</a>
+          </div>
+        </li>
+        <li>
+          <button class="dropdown-btn">Chapter 6: Advanced Topics</button>
+          <div class="dropdown-container">
+            <a href="#context-api">Context API</a>
+            <a href="#custom-hooks">Custom Hooks</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Sections -->
+    <main class="content">
+      <!-- Chapter 1: Introduction to React -->
+      <section id="react-intro">
+        <h2>Chapter 1: Introduction to React</h2>
+        <p>
+          React is a JavaScript library for building user interfaces. It helps you create interactive UIs with reusable components.
+        </p>
+        <h3>Example: Rendering a Simple Element</h3>
+        <pre><code>
+// This example uses JSX to render a simple element
+ReactDOM.render(
+  &lt;h1&gt;Hello, React!&lt;/h1&gt;,
+  document.getElementById('interactive-output-1')
+);
+        </code></pre>
+        <div class="interactive-container">
+          <textarea id="code-example-1" class="textarea-code">
+// Render a simple React element using JSX
+ReactDOM.render(
+  <h1>Hello, React!</h1>,
+  document.getElementById('interactive-output-1')
+);
+          </textarea>
+          <button class="run-button" onclick="runCode('interactive-output-1', 'code-example-1')">Run Code</button>
+          <div id="interactive-output-1" class="output"></div>
+        </div>
+        <p>
+          <strong>Explanation:</strong> This code renders a header with the text "Hello, React!" into the designated output container using <code>ReactDOM.render</code>.
+        </p>
+      </section>
+
+      <section id="react-benefits">
+        <h2>Chapter 1: Why Use React?</h2>
+        <p>
+          React’s component-based architecture, efficient DOM updates with its Virtual DOM, and a strong ecosystem make it a popular choice for building complex web applications.
+        </p>
+      </section>
+
+      <!-- Chapter 2: JSX -->
+      <section id="jsx-intro">
+        <h2>Chapter 2: JSX - Introduction</h2>
+        <p>
+          JSX is a syntax extension for JavaScript that allows you to write HTML-like code in your JavaScript files. It makes your code easier to understand and maintain.
+        </p>
+        <h3>Example: Creating a JSX Element</h3>
+        <pre><code>
+// This example creates a JSX element and renders it.
+const element = (
+  &lt;div&gt;
+    &lt;h2&gt;JSX Example&lt;/h2&gt;
+    &lt;p&gt;This is a JSX element.&lt;/p&gt;
+  &lt;/div&gt;
+);
+
+ReactDOM.render(
+  element,
+  document.getElementById('interactive-output-2')
+);
+        </code></pre>
+        <div class="interactive-container">
+          <textarea id="code-example-2" class="textarea-code">
+const element = (
+  <div>
+    <h2>JSX Example</h2>
+    <p>This is a JSX element.</p>
+  </div>
+);
+
+ReactDOM.render(
+  element,
+  document.getElementById('interactive-output-2')
+);
+          </textarea>
+          <button class="run-button" onclick="runCode('interactive-output-2', 'code-example-2')">Run Code</button>
+          <div id="interactive-output-2" class="output"></div>
+        </div>
+        <p>
+          <strong>Explanation:</strong> JSX allows you to write HTML-like syntax directly in your JavaScript. The code is transpiled into standard JavaScript that creates React elements.
+        </p>
+      </section>
+
+      <!-- Chapter 3: Components & Props -->
+      <section id="components-intro">
+        <h2>Chapter 3: Components &amp; Props</h2>
+        <p>
+          Components are the building blocks of a React application. They can be written as functions (functional components) or classes, and they accept inputs called "props".
+        </p>
+        <h3>Example: Functional Component with Props</h3>
+        <pre><code>
+// This component accepts props and renders a welcome message.
+function Welcome(props) {
+  return <h2>Welcome, {props.name}!</h2>;
+}
+
+ReactDOM.render(
+  <Welcome name="React Learner" />,
+  document.getElementById('interactive-output-3')
+);
+        </code></pre>
+        <div class="interactive-container">
+          <textarea id="code-example-3" class="textarea-code">
+function Welcome(props) {
+  return <h2>Welcome, {props.name}!</h2>;
+}
+
+ReactDOM.render(
+  <Welcome name="React Learner" />,
+  document.getElementById('interactive-output-3')
+);
+          </textarea>
+          <button class="run-button" onclick="runCode('interactive-output-3', 'code-example-3')">Run Code</button>
+          <div id="interactive-output-3" class="output"></div>
+        </div>
+        <p>
+          <strong>Explanation:</strong> The <code>Welcome</code> component takes a <code>name</code> prop and displays a personalized greeting.
+        </p>
+      </section>
+
+      <!-- Chapter 4: State & Hooks -->
+      <section id="state-intro">
+        <h2>Chapter 4: State &amp; Hooks</h2>
+        <p>
+          Hooks such as <code>useState</code> and <code>useEffect</code> allow you to manage state and lifecycle events in functional components.
+        </p>
+        <h3>Example: Counter using useState</h3>
+        <pre><code>
+// This component uses the useState hook to create a counter.
+function Counter() {
+  const [count, setCount] = React.useState(0);
+  return (
+    <div>
+      <h3>Count: {count}</h3>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+
+ReactDOM.render(
+  <Counter />,
+  document.getElementById('interactive-output-4')
+);
+        </code></pre>
+        <div class="interactive-container">
+          <textarea id="code-example-4" class="textarea-code">
+function Counter() {
+  const [count, setCount] = React.useState(0);
+  return (
+    <div>
+      <h3>Count: {count}</h3>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+
+ReactDOM.render(
+  <Counter />,
+  document.getElementById('interactive-output-4')
+);
+          </textarea>
+          <button class="run-button" onclick="runCode('interactive-output-4', 'code-example-4')">Run Code</button>
+          <div id="interactive-output-4" class="output"></div>
+        </div>
+        <p>
+          <strong>Explanation:</strong> This example demonstrates how to use the <code>useState</code> hook to create a counter that updates its state when the button is clicked.
+        </p>
+      </section>
+
+      <!-- Chapter 5: Event Handling -->
+      <section id="event-handling">
+        <h2>Chapter 5: Event Handling</h2>
+        <p>
+          React’s synthetic event system makes handling events straightforward. You can attach event handlers directly to your components.
+        </p>
+        <h3>Example: Button Click Event</h3>
+        <pre><code>
+// This component handles a button click event.
+function Clicker() {
+  const handleClick = () => alert("Button clicked!");
+  return <button onClick={handleClick}>Click Me</button>;
+}
+
+ReactDOM.render(
+  <Clicker />,
+  document.getElementById('interactive-output-5')
+);
+        </code></pre>
+        <div class="interactive-container">
+          <textarea id="code-example-5" class="textarea-code">
+function Clicker() {
+  const handleClick = () => alert("Button clicked!");
+  return <button onClick={handleClick}>Click Me</button>;
+}
+
+ReactDOM.render(
+  <Clicker />,
+  document.getElementById('interactive-output-5')
+);
+          </textarea>
+          <button class="run-button" onclick="runCode('interactive-output-5', 'code-example-5')">Run Code</button>
+          <div id="interactive-output-5" class="output"></div>
+        </div>
+        <p>
+          <strong>Explanation:</strong> In this example, clicking the button triggers an event handler that shows an alert.
+        </p>
+      </section>
+
+      <!-- Chapter 6: Advanced Topics -->
+      <section id="context-api">
+        <h2>Chapter 6: Advanced Topics - Context API</h2>
+        <p>
+          The Context API enables you to pass data through the component tree without having to pass props manually at every level.
+        </p>
+        <h3>Example: Using the Context API</h3>
+        <pre><code>
+// This example demonstrates using the Context API.
+const ThemeContext = React.createContext('light');
+
+function ThemedButton() {
+  const theme = React.useContext(ThemeContext);
+  return (
+    <button style={{
+      background: theme === 'dark' ? '#333' : '#ddd',
+      color: theme === 'dark' ? '#fff' : '#000'
+    }}>
+      I am styled by theme context!
+    </button>
+  );
+}
+
+function App() {
+  return (
+    <ThemeContext.Provider value="dark">
+      <ThemedButton />
+    </ThemeContext.Provider>
+  );
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('interactive-output-6')
+);
+        </code></pre>
+        <div class="interactive-container">
+          <textarea id="code-example-6" class="textarea-code">
+const ThemeContext = React.createContext('light');
+
+function ThemedButton() {
+  const theme = React.useContext(ThemeContext);
+  return (
+    <button style={{
+      background: theme === 'dark' ? '#333' : '#ddd',
+      color: theme === 'dark' ? '#fff' : '#000'
+    }}>
+      I am styled by theme context!
+    </button>
+  );
+}
+
+function App() {
+  return (
+    <ThemeContext.Provider value="dark">
+      <ThemedButton />
+    </ThemeContext.Provider>
+  );
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('interactive-output-6')
+);
+          </textarea>
+          <button class="run-button" onclick="runCode('interactive-output-6', 'code-example-6')">Run Code</button>
+          <div id="interactive-output-6" class="output"></div>
+        </div>
+        <p>
+          <strong>Explanation:</strong> This code shows how to use the Context API to pass a theme value down to components without prop drilling.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <!-- JavaScript for Sidebar Dropdown and Interactive Code Execution -->
+  <script>
+    // Sidebar Dropdown Functionality
+    var dropdowns = document.getElementsByClassName("dropdown-btn");
+    for (var i = 0; i < dropdowns.length; i++) {
+      dropdowns[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+      });
+    }
+
+    // Function to Run Interactive Code Examples (using Babel to transpile JSX)
+    function runCode(outputId, textareaId) {
+      const code = document.getElementById(textareaId).value;
+      try {
+        const transformedCode = Babel.transform(code, { presets: ['react', 'env'] }).code;
+        const outputContainer = document.getElementById(outputId);
+        outputContainer.innerHTML = ""; // Clear previous output
+        // Create a new script element
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.text = transformedCode;
+        outputContainer.appendChild(script);
+      } catch (error) {
+        alert("Error in code: " + error.message);
+      }
+    }
+  </script>
+</body>
+</html>

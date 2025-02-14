@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Backend Web Developer JS Tutorial</title>
+    <style>
+      /* Global Styles */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        color: #333;
+        line-height: 1.6;
+      }
+      .container {
+        display: flex;
+        min-height: 100vh;
+      }
+      /* Sidebar Styles */
+      .sidebar {
+        width: 250px;
+        background: #333;
+        color: #fff;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+      .sidebar li {
+        margin-bottom: 10px;
+      }
+      .sidebar a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        padding: 8px;
+        border-radius: 4px;
+      }
+      .sidebar a:hover {
+        background: #575757;
+      }
+      details summary {
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 4px;
+      }
+      details summary:hover {
+        background: #575757;
+      }
+      details ul {
+        margin-left: 15px;
+        padding: 0;
+      }
+      /* Content Styles */
+      .content {
+        flex: 1;
+        padding: 20px;
+        background: #fff;
+      }
+      .content section {
+        margin-bottom: 40px;
+      }
+      pre {
+        background: #eee;
+        padding: 10px;
+        overflow-x: auto;
+      }
+      code {
+        font-family: Consolas, monospace;
+      }
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+        .sidebar {
+          width: 100%;
+          display: none;
+        }
+        .sidebar.active {
+          display: block;
+        }
+        .toggle-btn {
+          display: block;
+          background: #333;
+          color: #fff;
+          padding: 10px;
+          border: none;
+          width: 100%;
+          text-align: left;
+          cursor: pointer;
+        }
+      }
+      .toggle-btn {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Toggle Button -->
+    <button class="toggle-btn" id="toggle-btn">☰ Menu</button>
+
+    <div class="container">
+      <!-- Sidebar Navigation -->
+      <nav class="sidebar" id="sidebar">
+        <ul>
+          <!-- Chapter 1: Introduction -->
+          <li>
+            <details open>
+              <summary>Chapter 1: Introduction</summary>
+              <ul>
+                <li><a href="#intro">What is Backend Development?</a></li>
+                <li><a href="#node-overview">Overview of Node.js</a></li>
+              </ul>
+            </details>
+          </li>
+          <!-- Chapter 2: Node.js Setup -->
+          <li>
+            <details>
+              <summary>Chapter 2: Node.js Setup</summary>
+              <ul>
+                <li>
+                  <a href="#install-node">Installing Node.js &amp; NPM</a>
+                </li>
+                <li><a href="#package-json">Understanding package.json</a></li>
+              </ul>
+            </details>
+          </li>
+          <!-- Chapter 3: Core Modules & Async -->
+          <li>
+            <details>
+              <summary>Chapter 3: Core Modules &amp; Async</summary>
+              <ul>
+                <li><a href="#core-modules">Using Core Modules</a></li>
+                <li>
+                  <a href="#async-programming">Asynchronous Programming</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <!-- Chapter 4: HTTP Server -->
+          <li>
+            <details>
+              <summary>Chapter 4: HTTP Server</summary>
+              <ul>
+                <li><a href="#http-server">Creating a Basic HTTP Server</a></li>
+              </ul>
+            </details>
+          </li>
+          <!-- Chapter 5: Express.js -->
+          <li>
+            <details>
+              <summary>Chapter 5: Express.js</summary>
+              <ul>
+                <li><a href="#express-intro">Introduction to Express.js</a></li>
+                <li><a href="#express-routing">Routing &amp; Middleware</a></li>
+              </ul>
+            </details>
+          </li>
+          <!-- Chapter 6: RESTful APIs -->
+          <li>
+            <details>
+              <summary>Chapter 6: RESTful APIs</summary>
+              <ul>
+                <li><a href="#rest-api">Building RESTful APIs</a></li>
+              </ul>
+            </details>
+          </li>
+          <!-- Chapter 7: Databases -->
+          <li>
+            <details>
+              <summary>Chapter 7: Databases</summary>
+              <ul>
+                <li><a href="#mongodb">Connecting to MongoDB</a></li>
+                <li><a href="#mongoose">Using Mongoose</a></li>
+              </ul>
+            </details>
+          </li>
+          <!-- Chapter 8: Authentication -->
+          <li>
+            <details>
+              <summary>Chapter 8: Authentication</summary>
+              <ul>
+                <li><a href="#jwt">JWT Authentication</a></li>
+              </ul>
+            </details>
+          </li>
+          <!-- Chapter 9: Advanced Topics -->
+          <li>
+            <details>
+              <summary>Chapter 9: Advanced Topics</summary>
+              <ul>
+                <li><a href="#clustering">Clustering &amp; Performance</a></li>
+                <li><a href="#testing">Testing with Mocha/Chai</a></li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main Content Area -->
+      <div class="content">
+        <!-- Chapter 1: Introduction -->
+        <section id="intro">
+          <h2>Chapter 1: Introduction to Backend Development</h2>
+          <p>
+            Backend development involves creating server-side logic, managing
+            databases, handling authentication, and ensuring the overall
+            functionality of web applications. With JavaScript and Node.js,
+            developers can build scalable and efficient backends.
+          </p>
+        </section>
+        <section id="node-overview">
+          <h2>Overview of Node.js</h2>
+          <p>
+            Node.js is a JavaScript runtime built on Chrome's V8 engine that
+            allows you to run JavaScript on the server. It uses an event-driven,
+            non-blocking I/O model for high performance and scalability.
+          </p>
+          <h3>Example: Running a Simple Node.js Script</h3>
+          <pre><code class="javascript">
+// Save this as app.js and run with "node app.js"
+console.log("Hello from Node.js!");
+        </code></pre>
+        </section>
+
+        <!-- Chapter 2: Node.js Setup -->
+        <section id="install-node">
+          <h2>Chapter 2: Installing Node.js &amp; NPM</h2>
+          <p>
+            Download and install Node.js from the official website (<a
+              href="https://nodejs.org/"
+              target="_blank"
+              >nodejs.org</a
+            >). This will also install npm (Node Package Manager) for managing
+            project dependencies.
+          </p>
+        </section>
+        <section id="package-json">
+          <h2>Understanding package.json</h2>
+          <p>
+            The <code>package.json</code> file contains metadata about your
+            project and lists its dependencies. It is created using the command
+            <code>npm init</code>.
+          </p>
+          <h3>Example: package.json File</h3>
+          <pre><code class="json">
+{
+  "name": "my-backend-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+        </code></pre>
+        </section>
+
+        <!-- Chapter 3: Core Modules & Asynchronous Programming -->
+        <section id="core-modules">
+          <h2>Chapter 3: Using Core Modules</h2>
+          <p>
+            Node.js provides many built-in modules. For example, the
+            <code>fs</code> module handles file system operations and the
+            <code>http</code> module helps create web servers.
+          </p>
+          <h3>Example: Reading a File with the fs Module</h3>
+          <pre><code class="javascript">
+const fs = require('fs');
+
+fs.readFile('example.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error("Error reading file:", err);
+    return;
+  }
+  console.log("File content:", data);
+});
+        </code></pre>
+        </section>
+        <section id="async-programming">
+          <h2>Asynchronous Programming in Node.js</h2>
+          <p>
+            Node.js is built for asynchronous programming. You can use
+            callbacks, Promises, or <code>async/await</code> to manage
+            non-blocking operations.
+          </p>
+          <h3>Example: Using async/await with the fs Promises API</h3>
+          <pre><code class="javascript">
+const fs = require('fs').promises;
+
+async function readFileAsync() {
+  try {
+    const data = await fs.readFile('example.txt', 'utf8');
+    console.log("File content:", data);
+  } catch (err) {
+    console.error("Error:", err);
+  }
+}
+
+readFileAsync();
+        </code></pre>
+        </section>
+
+        <!-- Chapter 4: HTTP Server -->
+        <section id="http-server">
+          <h2>Chapter 4: Creating a Basic HTTP Server</h2>
+          <p>
+            Using Node.js’s <code>http</code> module, you can create a simple
+            web server to handle HTTP requests and responses.
+          </p>
+          <h3>Example: Basic HTTP Server</h3>
+          <pre><code class="javascript">
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello from the HTTP server!');
+});
+
+server.listen(3000, () => {
+  console.log('Server is running on http://localhost:3000');
+});
+        </code></pre>
+        </section>
+
+        <!-- Chapter 5: Express.js -->
+        <section id="express-intro">
+          <h2>Chapter 5: Introduction to Express.js</h2>
+          <p>
+            Express.js is a minimalist web framework for Node.js that simplifies
+            routing, middleware integration, and API development.
+          </p>
+          <h3>Example: Setting Up a Basic Express App</h3>
+          <pre><code class="javascript">
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Hello from Express!');
+});
+
+app.listen(3000, () => {
+  console.log('Express app running on http://localhost:3000');
+});
+        </code></pre>
+        </section>
+        <section id="express-routing">
+          <h2>Express.js Routing &amp; Middleware</h2>
+          <p>
+            Express allows you to define routes and use middleware functions to
+            process requests. Middleware can be used for logging,
+            authentication, error handling, and more.
+          </p>
+          <h3>Example: Express Routing with Middleware</h3>
+          <pre><code class="javascript">
+const express = require('express');
+const app = express();
+
+// Middleware: Log each request
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
+// Routes
+app.get('/', (req, res) => {
+  res.send('Home Page');
+});
+
+app.get('/about', (req, res) => {
+  res.send('About Page');
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+app.listen(3000, () => {
+  console.log('Express app running on http://localhost:3000');
+});
+        </code></pre>
+        </section>
+
+        <!-- Chapter 6: RESTful APIs -->
+        <section id="rest-api">
+          <h2>Chapter 6: Building RESTful APIs with Express</h2>
+          <p>
+            RESTful APIs allow you to perform CRUD operations. Express makes it
+            simple to define endpoints for creating, reading, updating, and
+            deleting resources.
+          </p>
+          <h3>Example: Simple CRUD API</h3>
+          <pre><code class="javascript">
+const express = require('express');
+const app = express();
+app.use(express.json()); // Parse JSON bodies
+
+let items = []; // In-memory "database"
+
+// Create an item
+app.post('/items', (req, res) => {
+  const item = { id: items.length + 1, name: req.body.name };
+  items.push(item);
+  res.status(201).json(item);
+});
+
+// Read all items
+app.get('/items', (req, res) => {
+  res.json(items);
+});
+
+// Update an item
+app.put('/items/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  let item = items.find(i => i.id === id);
+  if (item) {
+    item.name = req.body.name;
+    res.json(item);
+  } else {
+    res.status(404).send('Item not found');
+  }
+});
+
+// Delete an item
+app.delete('/items/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  items = items.filter(i => i.id !== id);
+  res.status(204).send();
+});
+
+app.listen(3000, () => {
+  console.log('REST API running on http://localhost:3000');
+});
+        </code></pre>
+        </section>
+
+        <!-- Chapter 7: Databases -->
+        <section id="mongodb">
+          <h2>Chapter 7: Connecting to MongoDB</h2>
+          <p>
+            MongoDB is a popular NoSQL database. You can connect to it using the
+            native driver or an ODM like Mongoose.
+          </p>
+        </section>
+        <section id="mongoose">
+          <h2>Using Mongoose for MongoDB</h2>
+          <p>
+            Mongoose is an Object Data Modeling (ODM) library that provides a
+            schema-based solution for your application data.
+          </p>
+          <h3>Example: Mongoose Schema and Model</h3>
+          <pre><code class="javascript">
+const mongoose = require('mongoose');
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/mydatabase', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+// Define a schema
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  password: String
+});
+
+// Create a model
+const User = mongoose.model('User', userSchema);
+
+// Create and save a new user
+const newUser = new User({
+  name: 'Alice',
+  email: 'alice@example.com',
+  password: 'securepassword'
+});
+
+newUser.save()
+  .then(user => console.log('User saved:', user))
+  .catch(err => console.error(err));
+        </code></pre>
+        </section>
+
+        <!-- Chapter 8: Authentication -->
+        <section id="jwt">
+          <h2>Chapter 8: JWT Authentication</h2>
+          <p>
+            JSON Web Tokens (JWT) are used to securely transmit information
+            between parties. They are commonly used for authentication in
+            backend applications.
+          </p>
+          <h3>Example: Generating and Verifying JWT</h3>
+          <pre><code class="javascript">
+const jwt = require('jsonwebtoken');
+const secretKey = 'your_secret_key';
+
+// Generate a token
+const token = jwt.sign({ userId: 123 }, secretKey, { expiresIn: '1h' });
+console.log('Generated Token:', token);
+
+// Verify the token
+jwt.verify(token, secretKey, (err, decoded) => {
+  if (err) {
+    console.error('Token is invalid:', err);
+  } else {
+    console.log('Decoded Token:', decoded);
+  }
+});
+        </code></pre>
+        </section>
+
+        <!-- Chapter 9: Advanced Topics -->
+        <section id="clustering">
+          <h2>Chapter 9: Clustering &amp; Performance</h2>
+          <p>
+            Use Node.js's clustering module to utilize multiple CPU cores for
+            better performance under heavy load.
+          </p>
+          <h3>Example: Clustering with Node.js</h3>
+          <pre><code class="javascript">
+const cluster = require('cluster');
+const http = require('http');
+const numCPUs = require('os').cpus().length;
+
+if (cluster.isMaster) {
+  console.log(`Master ${process.pid} is running`);
+
+  // Fork workers.
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+
+  cluster.on('exit', (worker, code, signal) => {
+    console.log(`Worker ${worker.process.pid} died`);
+  });
+} else {
+  // Workers share any TCP connection.
+  http.createServer((req, res) => {
+    res.writeHead(200);
+    res.end('Hello from Worker ' + process.pid);
+  }).listen(3000);
+
+  console.log(`Worker ${process.pid} started`);
+}
+        </code></pre>
+        </section>
+        <section id="testing">
+          <h2>Testing with Mocha &amp; Chai</h2>
+          <p>
+            Automated testing ensures your backend works as expected. Mocha is a
+            testing framework, and Chai is an assertion library.
+          </p>
+          <h3>Example: Basic Mocha Test</h3>
+          <pre><code class="javascript">
+// Install Mocha and Chai: npm install mocha chai --save-dev
+const { expect } = require('chai');
+
+describe('Array', function() {
+  it('should start empty', function() {
+    const arr = [];
+    expect(arr.length).to.equal(0);
+  });
+});
+        </code></pre>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      // Toggle sidebar visibility on mobile devices
+      const toggleBtn = document.getElementById("toggle-btn");
+      const sidebar = document.getElementById("sidebar");
+      toggleBtn.addEventListener("click", function () {
+        sidebar.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

@@ -43,7 +43,6 @@
             <option value="all">All</option>
             <option value="computer-science">Computer Science</option>
             <option value="dsa">Data Structures &amp; Algorithms</option>
-            <!-- Add more options as needed -->
           </select>
         </div>
         <div class="tags">
@@ -53,7 +52,6 @@
             <span class="tag">Algorithms</span>
             <span class="tag">Data Structures</span>
             <span class="tag">Web Development</span>
-            <!-- Add more tags as needed -->
           </div>
         </div>
       </div>
@@ -64,40 +62,7 @@
       <div class="container">
         <h2>Explore Our Sections</h2>
         <div class="cards">
-          <!-- Card for Computer Science Section -->
-          <div class="card">
-            <h3>Computer Science</h3>
-
-            <a href="./cs.html" target="_blank" class="card-link">Explore</a>
-          </div>
-          <!-- Card for Data Structures & Algorithms Section -->
-          <div class="card">
-            <h3>Data Structures &amp; Algorithms (DSA)</h3>
-
-            <a href="./dsa.html" target="_blank" class="card-link">Explore</a>
-          </div>
-          <!-- Placeholder Card for Future Sections -->
-          <div class="card">
-            <h3>Design Patterns</h3>
-
-            <a href="./designpatterns.html" target="_blank" class="card-link"
-              >Explore</a
-            >
-          </div>
-          <div class="card">
-            <h3>JavaScript</h3>
-
-            <a href="./javascript.html" target="_blank" class="card-link"
-              >Explore</a
-            >
-          </div>
-          <div class="card">
-            <h3>HTML & CSS</h3>
-
-            <a href="./html&css.html" target="_blank" class="card-link"
-              >Explore</a
-            >
-          </div>
+          <!-- Cards will be dynamically generated here -->
         </div>
       </div>
     </section>
@@ -111,5 +76,46 @@
 
     <!-- Link to the JavaScript file -->
     <script src="script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Array of card objects containing the title and link for each card
+        const cardsData = [
+          { title: "Computer Science", link: "./cs.html" },
+          { title: "Data Structures & Algorithms (DSA)", link: "./dsa.html" },
+          { title: "Design Patterns", link: "./designpatterns.html" },
+          { title: "HTML & CSS", link: "./html&css.html" },
+          { title: "JavaScript", link: "./javascript.html" },
+          { title: "Backend", link: "./backend.html" },
+          { title: "Frontend", link: "./frontend.html" },
+          { title: "React", link: "./react.html" },
+        ];
+
+        // Select the container where the cards will be added
+        const cardsContainer = document.querySelector(".cards");
+
+        // Loop through the cardsData array and create each card dynamically
+        cardsData.forEach((card) => {
+          // Create the card div element
+          const cardDiv = document.createElement("div");
+          cardDiv.className = "card";
+
+          // Create and set up the card title element
+          const titleElement = document.createElement("h3");
+          titleElement.textContent = card.title;
+          cardDiv.appendChild(titleElement);
+
+          // Create and set up the card link element
+          const linkElement = document.createElement("a");
+          linkElement.href = card.link;
+          linkElement.target = "_blank";
+          linkElement.className = "card-link";
+          linkElement.textContent = "Explore";
+          cardDiv.appendChild(linkElement);
+
+          // Append the card to the cards container
+          cardsContainer.appendChild(cardDiv);
+        });
+      });
+    </script>
   </body>
 </html>
