@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JavaScript Tutorial: From Basics to Advanced</title>
+    <style>
+      /* Global Styles */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+        line-height: 1.6;
+        color: #333;
+      }
+      .container {
+        display: flex;
+        min-height: 100vh;
+      }
+      /* Sidebar Styles */
+      .sidebar {
+        width: 250px;
+        background: #333;
+        color: #fff;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+      .sidebar li {
+        margin-bottom: 10px;
+      }
+      .sidebar a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        padding: 8px;
+        border-radius: 4px;
+      }
+      .sidebar a:hover {
+        background: #575757;
+      }
+      details summary {
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 4px;
+      }
+      details summary:hover {
+        background: #575757;
+      }
+      details ul {
+        margin-left: 15px;
+        padding: 0;
+      }
+      /* Content Styles */
+      .content {
+        flex: 1;
+        padding: 20px;
+        background: #fff;
+      }
+      .content section {
+        margin-bottom: 40px;
+      }
+      .content pre {
+        background: #eee;
+        padding: 10px;
+        overflow-x: auto;
+      }
+      .content code {
+        font-family: Consolas, monospace;
+      }
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+        .sidebar {
+          width: 100%;
+          display: none;
+        }
+        .sidebar.active {
+          display: block;
+        }
+        .toggle-btn {
+          display: block;
+          background: #333;
+          color: #fff;
+          padding: 10px;
+          border: none;
+          width: 100%;
+          text-align: left;
+          cursor: pointer;
+        }
+      }
+      .toggle-btn {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Toggle Button -->
+    <button class="toggle-btn" id="toggle-btn">☰ Menu</button>
+
+    <div class="container">
+      <!-- Sidebar Navigation -->
+      <nav class="sidebar" id="sidebar">
+        <ul>
+          <li>
+            <details>
+              <summary>Chapter 1: Introduction</summary>
+              <ul>
+                <li><a href="#chapter1">What is JavaScript?</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Chapter 2: Variables &amp; Data Types</summary>
+              <ul>
+                <li><a href="#chapter2">Variables</a></li>
+                <li><a href="#chapter2-data-types">Data Types</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Chapter 3: Operators</summary>
+              <ul>
+                <li><a href="#chapter3">Arithmetic, Comparison, Logical</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Chapter 4: Conditionals</summary>
+              <ul>
+                <li><a href="#chapter4">if...else &amp; switch</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Chapter 5: Loops</summary>
+              <ul>
+                <li><a href="#chapter5">for, while, do...while</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Chapter 6: Functions</summary>
+              <ul>
+                <li><a href="#chapter6">Declarations &amp; Expressions</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Chapter 7: Objects &amp; Arrays</summary>
+              <ul>
+                <li><a href="#chapter7">Objects</a></li>
+                <li><a href="#chapter7-arrays">Arrays</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Chapter 8: DOM Manipulation</summary>
+              <ul>
+                <li>
+                  <a href="#chapter8">Selecting &amp; Modifying Elements</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Chapter 9: Events</summary>
+              <ul>
+                <li><a href="#chapter9">Event Listeners</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Chapter 10: Asynchronous JavaScript</summary>
+              <ul>
+                <li><a href="#chapter10">Promises &amp; async/await</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Chapter 11: Advanced Topics</summary>
+              <ul>
+                <li><a href="#chapter11">Closures, Prototypes, Classes</a></li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main Content Area -->
+      <div class="content">
+        <!-- Chapter 1: Introduction -->
+        <section id="chapter1">
+          <h2>Chapter 1: Introduction to JavaScript</h2>
+          <p>
+            JavaScript is a versatile, high-level programming language that is
+            primarily used to create interactive effects within web browsers. It
+            allows you to implement dynamic features on web pages—anything from
+            simple animations to complex web applications.
+          </p>
+          <h3>Example: Hello World</h3>
+          <pre><code class="javascript">
+// This is a simple JavaScript program that prints "Hello, World!" to the console.
+console.log("Hello, World!");
+        </code></pre>
+          <p>
+            The above code uses <code>console.log()</code> to output text to the
+            browser's console.
+          </p>
+        </section>
+
+        <!-- Chapter 2: Variables & Data Types -->
+        <section id="chapter2">
+          <h2>Chapter 2: Variables</h2>
+          <p>
+            Variables are containers for storing data values. In JavaScript, you
+            can declare variables using <code>var</code>, <code>let</code>, or
+            <code>const</code>.
+          </p>
+          <h3>Example: Declaring Variables</h3>
+          <pre><code class="javascript">
+// Using let and const (ES6+)
+let name = "John"; // can be reassigned
+const age = 30;    // constant value, cannot be reassigned
+
+console.log(name);
+console.log(age);
+        </code></pre>
+        </section>
+
+        <section id="chapter2-data-types">
+          <h2>Chapter 2: Data Types</h2>
+          <p>JavaScript provides several data types including:</p>
+          <ul>
+            <li><strong>Number</strong>: Numeric data (e.g., 42, 3.14)</li>
+            <li><strong>String</strong>: Text (e.g., "Hello")</li>
+            <li>
+              <strong>Boolean</strong>: <code>true</code> or <code>false</code>
+            </li>
+            <li><strong>Object</strong>: Collections of properties</li>
+            <li>
+              <strong>Undefined</strong>: A variable that has not been assigned
+              a value
+            </li>
+            <li><strong>Null</strong>: Represents no value</li>
+          </ul>
+          <h3>Example: Data Types</h3>
+          <pre><code class="javascript">
+let num = 42;              // Number
+let str = "JavaScript";    // String
+let isTrue = true;         // Boolean
+let nothing = null;        // Null
+let notDefined;            // Undefined
+
+console.log(typeof num);       // "number"
+console.log(typeof str);       // "string"
+console.log(typeof isTrue);    // "boolean"
+console.log(typeof nothing);   // "object" (a known quirk)
+console.log(typeof notDefined); // "undefined"
+        </code></pre>
+        </section>
+
+        <!-- Chapter 3: Operators -->
+        <section id="chapter3">
+          <h2>Chapter 3: Operators</h2>
+          <p>
+            Operators are used to perform operations on variables and values.
+            JavaScript supports arithmetic, comparison, logical, and assignment
+            operators.
+          </p>
+          <h3>Example: Arithmetic Operators</h3>
+          <pre><code class="javascript">
+let a = 10;
+let b = 5;
+
+console.log(a + b); // Addition: 15
+console.log(a - b); // Subtraction: 5
+console.log(a * b); // Multiplication: 50
+console.log(a / b); // Division: 2
+        </code></pre>
+        </section>
+
+        <!-- Chapter 4: Conditionals -->
+        <section id="chapter4">
+          <h2>Chapter 4: Conditionals</h2>
+          <p>
+            Conditional statements control the flow of code based on conditions.
+            The most common are <code>if</code>, <code>else if</code>,
+            <code>else</code>, and <code>switch</code>.
+          </p>
+          <h3>Example: if...else</h3>
+          <pre><code class="javascript">
+let score = 85;
+
+if (score >= 90) {
+  console.log("Grade: A");
+} else if (score >= 80) {
+  console.log("Grade: B");
+} else {
+  console.log("Grade: C or below");
+}
+        </code></pre>
+        </section>
+
+        <!-- Chapter 5: Loops -->
+        <section id="chapter5">
+          <h2>Chapter 5: Loops</h2>
+          <p>
+            Loops allow you to execute a block of code repeatedly. JavaScript
+            supports <code>for</code>, <code>while</code>, and
+            <code>do...while</code> loops.
+          </p>
+          <h3>Example: for Loop</h3>
+          <pre><code class="javascript">
+for (let i = 0; i < 5; i++) {
+  console.log("Iteration " + i);
+}
+        </code></pre>
+        </section>
+
+        <!-- Chapter 6: Functions -->
+        <section id="chapter6">
+          <h2>Chapter 6: Functions</h2>
+          <p>
+            Functions are blocks of code designed to perform a particular task.
+            They are executed when "called."
+          </p>
+          <h3>Example: Function Declaration</h3>
+          <pre><code class="javascript">
+function greet(name) {
+  return "Hello, " + name + "!";
+}
+
+console.log(greet("Alice")); // Outputs: Hello, Alice!
+        </code></pre>
+        </section>
+
+        <!-- Chapter 7: Objects & Arrays -->
+        <section id="chapter7">
+          <h2>Chapter 7: Objects</h2>
+          <p>
+            Objects are collections of key-value pairs. They allow you to store
+            structured data.
+          </p>
+          <h3>Example: Creating an Object</h3>
+          <pre><code class="javascript">
+let person = {
+  name: "Alice",
+  age: 25,
+  greet: function() {
+    return "Hi, I'm " + this.name;
+  }
+};
+
+console.log(person.greet());
+        </code></pre>
+        </section>
+
+        <section id="chapter7-arrays">
+          <h2>Chapter 7: Arrays</h2>
+          <p>Arrays are ordered collections of values.</p>
+          <h3>Example: Creating an Array</h3>
+          <pre><code class="javascript">
+let fruits = ["Apple", "Banana", "Cherry"];
+console.log(fruits[0]); // Outputs: Apple
+        </code></pre>
+        </section>
+
+        <!-- Chapter 8: DOM Manipulation -->
+        <section id="chapter8">
+          <h2>Chapter 8: DOM Manipulation</h2>
+          <p>
+            The Document Object Model (DOM) represents the web page so that
+            programs can change the document structure, style, and content
+            dynamically.
+          </p>
+          <h3>Example: Changing Content</h3>
+          <pre><code class="javascript">
+// HTML Element: <div id="demo">Original Content</div>
+document.getElementById("demo").innerText = "Content updated!";
+        </code></pre>
+          <p>
+            In this example, the content of the element with the id
+            <code>demo</code> is updated. To test this, ensure you have an
+            element with id="demo" in your HTML.
+          </p>
+        </section>
+
+        <!-- Chapter 9: Events -->
+        <section id="chapter9">
+          <h2>Chapter 9: Events</h2>
+          <p>
+            Events are actions (like clicks, key presses, etc.) that occur in
+            the browser. You can respond to these events using event listeners.
+          </p>
+          <h3>Example: Click Event</h3>
+          <pre><code class="javascript">
+// HTML Button: <button id="myButton">Click Me</button>
+document.getElementById("myButton").addEventListener("click", function() {
+  alert("Button clicked!");
+});
+        </code></pre>
+          <p>Click the button below to see the event in action:</p>
+          <button id="myButton">Click Me</button>
+        </section>
+
+        <!-- Chapter 10: Asynchronous JavaScript -->
+        <section id="chapter10">
+          <h2>Chapter 10: Asynchronous JavaScript</h2>
+          <p>
+            Although JavaScript is single-threaded, it can handle asynchronous
+            operations using callbacks, Promises, and <code>async/await</code>.
+          </p>
+          <h3>Example: Using async/await with a Delay</h3>
+          <pre><code class="javascript">
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function asyncExample() {
+  console.log("Start");
+  await delay(1000); // Wait for 1 second
+  console.log("1 second later");
+}
+
+asyncExample();
+        </code></pre>
+        </section>
+
+        <!-- Chapter 11: Advanced Topics -->
+        <section id="chapter11">
+          <h2>Chapter 11: Advanced Topics</h2>
+          <p>
+            This chapter covers more advanced JavaScript topics such as
+            closures, prototypes, and ES6+ features like arrow functions and
+            classes.
+          </p>
+          <h3>Example: Closures, Arrow Functions &amp; Classes</h3>
+          <pre><code class="javascript">
+// Arrow Function Example
+const add = (a, b) => a + b;
+console.log(add(5, 7)); // Outputs: 12
+
+// Closure Example
+function makeCounter() {
+  let count = 0;
+  return function() {
+    count++;
+    return count;
+  };
+}
+
+const counter = makeCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+
+// ES6 Classes and Inheritance
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  speak() {
+    console.log(`${this.name} makes a noise.`);
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    console.log(`${this.name} barks.`);
+  }
+}
+
+const d = new Dog("Mitzie");
+d.speak(); // Mitzie barks.
+        </code></pre>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      // Toggle sidebar visibility on mobile devices
+      const toggleBtn = document.getElementById("toggle-btn");
+      const sidebar = document.getElementById("sidebar");
+
+      toggleBtn.addEventListener("click", function () {
+        sidebar.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
