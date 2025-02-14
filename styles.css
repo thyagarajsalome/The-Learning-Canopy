@@ -113,6 +113,8 @@ body {
 }
 
 #category-filter {
+  border: 1px dashed;
+  color: gray;
   padding: 8px;
   font-size: 1rem;
 }
@@ -171,6 +173,7 @@ body {
 }
 
 .card h3 {
+  color: #333;
   margin-bottom: 10px;
 }
 
@@ -179,11 +182,15 @@ body {
 }
 
 .card-link {
+  font-size: small;
   text-decoration: none;
   color: #fff;
   background: gray;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 5px 10px;
+  border-radius: 2.5px;
+}
+.card-link:hover {
+  background: #004080;
 }
 
 /* --- Footer --- */
