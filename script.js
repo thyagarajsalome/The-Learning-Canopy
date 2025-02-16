@@ -19,11 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { title: "Design Patterns", link: "./designpatterns.html" },
     { title: "HTML & CSS", link: "./html&css.html" },
+    { title: " Web UI-UX ", link: "./ui&ux.html" },
     { title: "JavaScript", link: "./javascript.html" },
     { title: "Backend", link: "./backend.html" },
     { title: "Frontend", link: "./frontend.html" },
     { title: "React", link: "./react.html" },
     { title: "API", link: "./api.html" },
+    { title: "Data fetching", link: "./datafetch.html" },
     { title: "Project Architecture", link: "./projectarch.html" },
   ];
 
