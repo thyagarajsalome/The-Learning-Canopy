@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>API In-Depth Study: From Basic to Advanced</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      /* Global Styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        background: #f9f9f9;
+      }
+      a {
+        color: #4caf50;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Sidebar Styles */
+      .sidebar {
+        width: 250px;
+        background-color: #333;
+        color: #fff;
+        min-height: 100vh;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .sidebar h2 {
+        margin-top: 0;
+        font-size: 1.5em;
+        text-align: center;
+      }
+      .sidebar nav details {
+        margin-bottom: 10px;
+      }
+      .sidebar nav details summary {
+        cursor: pointer;
+        padding: 5px 0;
+        font-weight: bold;
+        outline: none;
+      }
+      .sidebar nav ul {
+        list-style: none;
+        padding-left: 15px;
+        margin-top: 5px;
+      }
+      .sidebar nav ul li {
+        margin-bottom: 5px;
+      }
+
+      /* Content Styles */
+      .content {
+        flex: 1;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow-y: auto;
+      }
+      section {
+        background: #fff;
+        padding: 20px;
+        margin-bottom: 40px;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      }
+      section h1 {
+        border-bottom: 2px solid #4caf50;
+        padding-bottom: 5px;
+      }
+      section h2 {
+        color: #333;
+      }
+      section p,
+      section li {
+        line-height: 1.6;
+      }
+      pre {
+        background-color: #f4f4f4;
+        padding: 10px;
+        overflow-x: auto;
+        border-radius: 4px;
+      }
+      code {
+        font-family: Consolas, monospace;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        body {
+          flex-direction: column;
+        }
+        .sidebar {
+          width: 100%;
+          min-height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+      <h2>API Guide</h2>
+      <nav>
+        <details open>
+          <summary>Chapter 1: Introduction</summary>
+          <ul>
+            <li><a href="#chapter1">What is an API?</a></li>
+            <li><a href="#use-cases">Use Cases</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Chapter 2: API Types & Protocols</summary>
+          <ul>
+            <li><a href="#rest">REST APIs</a></li>
+            <li><a href="#soap">SOAP APIs</a></li>
+            <li><a href="#graphql">GraphQL APIs</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Chapter 3: API Design & Best Practices</summary>
+          <ul>
+            <li><a href="#design">RESTful Design Principles</a></li>
+            <li><a href="#documentation">Documentation & Versioning</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Chapter 4: API Security & Authentication</summary>
+          <ul>
+            <li><a href="#api-keys">API Keys</a></li>
+            <li><a href="#oauth">OAuth & JWT</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Chapter 5: Frontend Integration</summary>
+          <ul>
+            <li><a href="#fetch-api">Using Fetch API</a></li>
+            <li><a href="#axios">Axios Example</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Chapter 6: Backend API Production</summary>
+          <ul>
+            <li><a href="#nodejs">Node.js Express API</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Chapter 7: Advanced Topics</summary>
+          <ul>
+            <li><a href="#caching">Caching & Rate Limiting</a></li>
+            <li><a href="#microservices">Microservices Architecture</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Chapter 8: Testing & Monitoring</summary>
+          <ul>
+            <li><a href="#testing">API Testing</a></li>
+            <li><a href="#monitoring">Monitoring & Logging</a></li>
+          </ul>
+        </details>
+      </nav>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content">
+      <!-- Chapter 1: Introduction -->
+      <section id="chapter1">
+        <h1>Chapter 1: Introduction to APIs</h1>
+        <h2>What is an API?</h2>
+        <p>
+          An <strong>Application Programming Interface (API)</strong> is a set
+          of rules and protocols that enables different software applications to
+          communicate with each other. It abstracts the underlying
+          implementation and exposes only objects or actions the developer
+          needs.
+        </p>
+
+        <h2 id="use-cases">Use Cases</h2>
+        <p>
+          APIs are used to connect frontends with backends, integrate
+          third-party services (like payment gateways, social logins), and allow
+          mobile applications to interact with cloud services. They are the
+          backbone of modern software ecosystems.
+        </p>
+
+        <h3>JavaScript Code Example: Basic API Call</h3>
+        <pre><code>
+// Using fetch to call a public API
+fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => {
+    console.log('Data fetched:', data);
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+      </code></pre>
+        <p>
+          <em>Explanation:</em> This code uses the <code>fetch</code> API to
+          make a GET request. The response is converted to JSON and logged,
+          while errors are caught and logged in case the request fails.
+        </p>
+      </section>
+
+      <!-- Chapter 2: API Types & Protocols -->
+      <section id="rest">
+        <h1>Chapter 2: API Types & Protocols</h1>
+        <h2>REST APIs</h2>
+        <p>
+          REST (Representational State Transfer) uses standard HTTP methods
+          (GET, POST, PUT, DELETE) for communication. Its stateless nature and
+          clear resource-based structure make it a popular choice for web APIs.
+        </p>
+
+        <h3>JavaScript Code Example: REST API Call</h3>
+        <pre><code>
+// Fetching data from a RESTful API endpoint
+fetch('https://api.example.com/users')
+  .then(response => response.json())
+  .then(users => {
+    console.log('User List:', users);
+  })
+  .catch(error => console.error('Error:', error));
+      </code></pre>
+        <p>
+          <em>Explanation:</em> This snippet demonstrates fetching a list of
+          users from a RESTful endpoint, converting the response to JSON, and
+          logging the data.
+        </p>
+      </section>
+
+      <section id="soap">
+        <h2>SOAP APIs</h2>
+        <p>
+          SOAP (Simple Object Access Protocol) relies on XML-based messaging.
+          Although more complex than REST, it is still used in enterprise
+          environments for its robust security and transactional capabilities.
+        </p>
+      </section>
+
+      <section id="graphql">
+        <h2>GraphQL APIs</h2>
+        <p>
+          GraphQL allows clients to request exactly the data they need. It
+          offers a flexible and efficient alternative to REST by consolidating
+          multiple API calls into a single request.
+        </p>
+
+        <h3>JavaScript Code Example: GraphQL Query</h3>
+        <pre><code>
+// Example of a GraphQL query using fetch
+fetch('https://api.example.com/graphql', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    query: `
+      {
+        users {
+          id
+          name
+          email
+        }
+      }
+    `
+  })
+})
+  .then(response => response.json())
+  .then(result => console.log('GraphQL Result:', result))
+  .catch(error => console.error('Error:', error));
+      </code></pre>
+        <p>
+          <em>Explanation:</em> Here a POST request is made to a GraphQL
+          endpoint with a query requesting user details. The response is parsed
+          and logged.
+        </p>
+      </section>
+
+      <!-- Chapter 3: API Design & Best Practices -->
+      <section id="design">
+        <h1>Chapter 3: API Design & Best Practices</h1>
+        <h2>RESTful Design Principles</h2>
+        <p>Well-designed APIs follow these key principles:</p>
+        <ul>
+          <li>Use nouns to represent resources (e.g., <code>/users</code>).</li>
+          <li>Utilize standard HTTP methods for CRUD operations.</li>
+          <li>Return proper HTTP status codes.</li>
+          <li>Keep endpoints consistent and intuitive.</li>
+        </ul>
+
+        <h2 id="documentation">Documentation & Versioning</h2>
+        <p>
+          Effective API documentation (using tools like Swagger or OpenAPI) and
+          versioning are essential to maintain backward compatibility and to
+          ensure developers can integrate with your API easily.
+        </p>
+      </section>
+
+      <!-- Chapter 4: API Security & Authentication -->
+      <section id="api-keys">
+        <h1>Chapter 4: API Security & Authentication</h1>
+        <h2>API Keys</h2>
+        <p>
+          API keys are tokens used to authenticate and authorize requests. They
+          help track and control how the API is used.
+        </p>
+
+        <h3>JavaScript Code Example: Using API Key with Fetch</h3>
+        <pre><code>
+// Fetching secure data using an API key for authentication
+fetch('https://api.example.com/secure-data', {
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY'
+  }
+})
+  .then(response => response.json())
+  .then(data => console.log('Secure Data:', data))
+  .catch(error => console.error('Error:', error));
+      </code></pre>
+        <p>
+          <em>Explanation:</em> The API key is included in the request header.
+          This example shows how to securely access an endpoint that requires
+          authentication.
+        </p>
+      </section>
+
+      <section id="oauth">
+        <h2>OAuth & JWT</h2>
+        <p>
+          OAuth is a protocol for authorization that enables users to grant
+          limited access to their resources without sharing credentials. JSON
+          Web Tokens (JWT) are commonly used within OAuth flows to securely
+          transmit information between parties.
+        </p>
+      </section>
+
+      <!-- Chapter 5: Frontend Integration -->
+      <section id="fetch-api">
+        <h1>Chapter 5: Frontend Integration</h1>
+        <h2>Using Fetch API</h2>
+        <p>
+          The <code>fetch</code> API offers a modern promise-based approach for
+          making HTTP requests from the browser, making it ideal for frontend
+          API integrations.
+        </p>
+
+        <h3>JavaScript Code Example: Fetch with Async/Await</h3>
+        <pre><code>
+async function fetchData() {
+  try {
+    const response = await fetch('https://api.example.com/data');
+    const data = await response.json();
+    console.log('Async Data:', data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+fetchData();
+      </code></pre>
+        <p>
+          <em>Explanation:</em> This example uses async/await for cleaner
+          asynchronous code when calling an API endpoint. It handles the
+          response and catches errors gracefully.
+        </p>
+      </section>
+
+      <section id="axios">
+        <h2>Axios Example</h2>
+        <p>
+          Axios is a popular third-party HTTP client that works in both browsers
+          and Node.js. It offers additional features like automatic JSON data
+          transformation and better error handling.
+        </p>
+
+        <h3>JavaScript Code Example: Axios GET Request</h3>
+        <pre><code>
+// Make sure to include Axios via CDN or npm installation
+axios.get('https://api.example.com/data')
+  .then(response => {
+    console.log('Axios Data:', response.data);
+  })
+  .catch(error => {
+    console.error('Axios Error:', error);
+  });
+      </code></pre>
+        <p>
+          <em>Explanation:</em> This snippet demonstrates using Axios to perform
+          a GET request. The response is processed and logged, with errors being
+          handled appropriately.
+        </p>
+      </section>
+
+      <!-- Chapter 6: Backend API Production -->
+      <section id="nodejs">
+        <h1>Chapter 6: Backend API Production</h1>
+        <h2>Node.js Express API</h2>
+        <p>
+          Express.js is a minimal and flexible Node.js framework used to create
+          robust APIs. It is widely adopted in production environments for its
+          simplicity and performance.
+        </p>
+
+        <h3>JavaScript Code Example: Basic Express API</h3>
+        <pre><code>
+// Basic Express API example
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// Sample endpoint: GET /api/users
+app.get('/api/users', (req, res) => {
+  res.json([
+    { id: 1, name: 'John Doe' },
+    { id: 2, name: 'Jane Doe' }
+  ]);
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
+      </code></pre>
+        <p>
+          <em>Explanation:</em> This code creates a simple RESTful API using
+          Express. It defines an endpoint to return a list of users and starts
+          the server on port 3000.
+        </p>
+      </section>
+
+      <!-- Chapter 7: Advanced Topics -->
+      <section id="caching">
+        <h1>Chapter 7: Advanced Topics</h1>
+        <h2>Caching & Rate Limiting</h2>
+        <p>
+          Caching helps improve performance by temporarily storing frequently
+          accessed data, while rate limiting protects your API from abuse by
+          restricting the number of requests from a client.
+        </p>
+        <p>
+          Production APIs often implement caching (using Redis, for example) and
+          middleware for rate limiting.
+        </p>
+      </section>
+
+      <section id="microservices">
+        <h2>Microservices Architecture</h2>
+        <p>
+          Microservices break a monolithic application into smaller, independent
+          services that communicate via APIs. This architecture enables
+          scalability, flexibility, and easier maintenance.
+        </p>
+      </section>
+
+      <!-- Chapter 8: Testing & Monitoring -->
+      <section id="testing">
+        <h1>Chapter 8: Testing & Monitoring</h1>
+        <h2>API Testing</h2>
+        <p>
+          Automated testing is essential for ensuring API reliability. Tools
+          like Postman, Jest, and Mocha help test API endpoints and workflows.
+        </p>
+
+        <h3>JavaScript Code Example: Testing with Jest</h3>
+        <pre><code>
+// Example of an API test using Jest and Supertest
+const request = require('supertest');
+const express = require('express');
+
+const app = express();
+app.get('/api/hello', (req, res) => res.json({ message: 'Hello, World!' }));
+
+test('GET /api/hello returns a greeting message', async () => {
+  const response = await request(app).get('/api/hello');
+  expect(response.statusCode).toBe(200);
+  expect(response.body).toHaveProperty('message', 'Hello, World!');
+});
+      </code></pre>
+        <p>
+          <em>Explanation:</em> This test uses Jest along with Supertest to
+          simulate an HTTP GET request to the Express API and verifies that the
+          response contains the expected greeting.
+        </p>
+      </section>
+
+      <section id="monitoring">
+        <h2>Monitoring & Logging</h2>
+        <p>
+          Monitoring tools (such as New Relic, Datadog, or the ELK stack) and
+          logging practices are crucial in production environments to track API
+          performance and quickly diagnose issues.
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
