@@ -2,196 +2,189 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Design Patterns in JavaScript – A Comprehensive Guide</title>
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- CSS styles -->
+    <title>Design Patterns: Real-World Examples & Diagrams</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
-      /* Reset some default styles */
-      * {
-        box-sizing: border-box;
+      /* Global Styles */
+      body {
+        font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-      }
-
-      body {
         display: flex;
-        font-family: Arial, sans-serif;
-        min-height: 100vh;
-        background-color: #f4f4f4;
+        background: #f0f0f0;
+        color: #333;
       }
-
-      /* Sidebar styles */
+      a {
+        color: #4caf50;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      /* Sidebar Styles */
       .sidebar {
         width: 250px;
         background-color: #333;
         color: #fff;
-        overflow-y: auto;
-        transition: all 0.3s ease;
+        padding: 20px;
+        box-sizing: border-box;
+        min-height: 100vh;
       }
-
       .sidebar h2 {
         text-align: center;
-        padding: 1rem;
-        background-color: #444;
-        margin-bottom: 1rem;
+        margin-top: 0;
+        font-size: 1.6em;
       }
-
-      .sidebar ul {
-        list-style: none;
+      .sidebar nav details {
+        margin-bottom: 10px;
       }
-
-      .sidebar li {
-        border-bottom: 1px solid #444;
-      }
-
-      .sidebar li a {
-        display: block;
-        padding: 0.8rem 1rem;
-        color: #fff;
-        text-decoration: none;
+      .sidebar nav details summary {
         cursor: pointer;
+        padding: 5px 0;
+        font-weight: bold;
+        outline: none;
       }
-
-      .sidebar li a:hover {
-        background-color: #555;
+      .sidebar nav ul {
+        list-style: none;
+        padding-left: 15px;
+        margin-top: 5px;
       }
-
-      /* Drop-down content */
-      .dropdown-content {
-        display: none;
-        background-color: #444;
+      .sidebar nav ul li {
+        margin-bottom: 5px;
       }
-
-      .dropdown-content a {
-        padding-left: 2rem;
-      }
-
-      .active {
-        display: block;
-      }
-
-      /* Main content styles */
-      .main-content {
+      /* Content Styles */
+      .content {
         flex: 1;
-        padding: 1rem 2rem;
+        padding: 20px;
+        box-sizing: border-box;
         overflow-y: auto;
       }
-
       section {
-        margin-bottom: 2rem;
         background: #fff;
-        padding: 1rem;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 40px;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
-
-      section h3 {
-        margin-bottom: 1rem;
-        color: #333;
+      section h1 {
+        border-bottom: 2px solid #4caf50;
+        padding-bottom: 5px;
       }
-
+      section h2 {
+        color: #4caf50;
+        margin-top: 20px;
+      }
+      section p,
+      section li {
+        line-height: 1.6;
+      }
       pre {
-        background: #eee;
-        padding: 1rem;
+        background-color: #f4f4f4;
+        padding: 10px;
         overflow-x: auto;
-        border-radius: 5px;
+        border-radius: 4px;
       }
-
-      /* Responsive adjustments */
+      code {
+        font-family: Consolas, monospace;
+      }
+      img {
+        display: block;
+        margin: 15px 0;
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      /* Responsive Design */
       @media (max-width: 768px) {
         body {
           flex-direction: column;
         }
         .sidebar {
           width: 100%;
-        }
-        .main-content {
-          padding: 1rem;
+          min-height: auto;
         }
       }
     </style>
   </head>
   <body>
     <!-- Sidebar Navigation -->
-    <nav class="sidebar">
-      <h2>Contents</h2>
-      <ul>
-        <li>
-          <a class="dropdown-btn">Chapter 1: Introduction</a>
-          <div class="dropdown-content">
-            <a href="#intro-what">What are Design Patterns?</a>
-            <a href="#intro-why">Why Use Them?</a>
-          </div>
-        </li>
-        <li>
-          <a class="dropdown-btn">Chapter 2: Creational Patterns</a>
-          <div class="dropdown-content">
-            <a href="#singleton">Singleton Pattern</a>
-            <a href="#factory">Factory Pattern</a>
-            <!-- Additional creational patterns can be added here -->
-          </div>
-        </li>
-        <li>
-          <a class="dropdown-btn">Chapter 3: Structural Patterns</a>
-          <div class="dropdown-content">
-            <a href="#decorator">Decorator Pattern</a>
-            <a href="#adapter">Adapter Pattern</a>
-            <!-- Additional structural patterns can be added here -->
-          </div>
-        </li>
-        <li>
-          <a class="dropdown-btn">Chapter 4: Behavioral Patterns</a>
-          <div class="dropdown-content">
-            <a href="#observer">Observer Pattern</a>
-            <a href="#strategy">Strategy Pattern</a>
-            <!-- Additional behavioral patterns can be added here -->
-          </div>
-        </li>
-        <li>
-          <a class="dropdown-btn">Chapter 5: Advanced Topics</a>
-          <div class="dropdown-content">
-            <a href="#modular">Module Pattern</a>
-            <a href="#composite">Composite &amp; Other Advanced Patterns</a>
-          </div>
-        </li>
-      </ul>
-    </nav>
+    <div class="sidebar">
+      <h2>Design Patterns</h2>
+      <nav>
+        <details open>
+          <summary>Chapter 1: Introduction</summary>
+          <ul>
+            <li><a href="#introduction">What are Design Patterns?</a></li>
+            <li><a href="#importance">Why Use Them?</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Chapter 2: Creational Patterns</summary>
+          <ul>
+            <li><a href="#singleton">Singleton Pattern</a></li>
+            <li><a href="#factory">Factory Pattern</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Chapter 3: Structural Patterns</summary>
+          <ul>
+            <li><a href="#adapter">Adapter Pattern</a></li>
+            <li><a href="#decorator">Decorator Pattern</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Chapter 4: Behavioral Patterns</summary>
+          <ul>
+            <li><a href="#observer">Observer Pattern</a></li>
+            <li><a href="#strategy">Strategy Pattern</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Chapter 5: Real-World & GUI Patterns</summary>
+          <ul>
+            <li><a href="#mvc">MVC Pattern</a></li>
+            <li><a href="#module">Module Pattern</a></li>
+          </ul>
+        </details>
+      </nav>
+    </div>
 
-    <!-- Main Content -->
-    <div class="main-content">
+    <!-- Main Content Area -->
+    <div class="content">
       <!-- Chapter 1: Introduction -->
-      <section id="intro-what">
-        <h3>Chapter 1.1: What are Design Patterns?</h3>
+      <section id="introduction">
+        <h1>Chapter 1: Introduction to Design Patterns</h1>
+        <h2>What are Design Patterns?</h2>
         <p>
-          Design Patterns are proven solutions to common software design
-          problems. They provide a template on how to solve a problem that can
-          be used in many different situations.
+          Design Patterns are time-tested, reusable solutions to common problems
+          in software design. They provide a common vocabulary and are a
+          blueprint for solving issues in your code.
         </p>
-      </section>
-
-      <section id="intro-why">
-        <h3>Chapter 1.2: Why Use Design Patterns?</h3>
+        <h2 id="importance">Why Use Them?</h2>
         <p>
-          Using design patterns improves code readability, reusability, and
-          maintainability. They help teams communicate using a shared vocabulary
-          and best practices.
+          They help increase code reusability, improve maintainability, and
+          facilitate communication among developers by providing proven
+          approaches to common challenges.
         </p>
-        <!-- Visualization: Pie Chart of Benefits -->
-        <canvas id="benefitsChart" width="400" height="200"></canvas>
       </section>
 
       <!-- Chapter 2: Creational Patterns -->
       <section id="singleton">
-        <h3>Chapter 2.1: Singleton Pattern</h3>
+        <h1>Chapter 2: Creational Patterns</h1>
+        <h2>Singleton Pattern</h2>
         <p>
-          The Singleton Pattern ensures a class has only one instance and
+          The Singleton Pattern ensures that a class has only one instance and
           provides a global point of access to it.
         </p>
-        <pre><code class="js">
-// Example of a Singleton in JavaScript
-const Singleton = (function() {
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Singleton_UML_class_diagram.svg"
+          alt="Singleton UML Diagram"
+        />
+        <h3>JavaScript Code Example</h3>
+        <pre><code>
+// Singleton in JavaScript
+const Singleton = (function () {
   let instance;
   
   function createInstance() {
@@ -200,7 +193,7 @@ const Singleton = (function() {
   }
   
   return {
-    getInstance: function() {
+    getInstance: function () {
       if (!instance) {
         instance = createInstance();
       }
@@ -209,310 +202,295 @@ const Singleton = (function() {
   };
 })();
 
-// Usage:
 const instance1 = Singleton.getInstance();
 const instance2 = Singleton.getInstance();
 console.log(instance1 === instance2); // true
       </code></pre>
+        <p>
+          <em>Explanation:</em> This code demonstrates the Singleton pattern by
+          ensuring that only one instance of an object is created and reused.
+        </p>
       </section>
 
       <section id="factory">
-        <h3>Chapter 2.2: Factory Pattern</h3>
+        <h2>Factory Pattern</h2>
         <p>
-          The Factory Pattern defines an interface for creating objects, but
-          lets subclasses decide which class to instantiate.
+          The Factory Pattern provides a way to create objects without exposing
+          the creation logic to the client and refers to the newly created
+          objects using a common interface.
         </p>
-        <pre><code class="js">
-// Example of a Factory Pattern in JavaScript
+        <img
+          src="https://refactoring.guru/images/patterns/factory-method/structure.png"
+          alt="Factory Pattern Diagram"
+        />
+        <h3>JavaScript Code Example</h3>
+        <pre><code>
+// Factory Pattern in JavaScript
 class Car {
   constructor(options) {
     this.doors = options.doors || 4;
-    this.state = options.state || 'brand new';
-    this.color = options.color || 'silver';
+    this.color = options.color || "silver";
   }
 }
 
-class Truck {
-  constructor(options) {
-    this.doors = options.doors || 2;
-    this.state = options.state || 'used';
-    this.color = options.color || 'black';
+class CarFactory {
+  createCar(options) {
+    return new Car(options);
   }
 }
 
-class VehicleFactory {
-  createVehicle(options) {
-    if(options.vehicleType === "car"){
-      return new Car(options);
-    } else if(options.vehicleType === "truck"){
-      return new Truck(options);
-    }
-  }
-}
-
-// Usage:
-const factory = new VehicleFactory();
-const car = factory.createVehicle({
-  vehicleType: "car",
-  doors: 4,
-  color: "red"
-});
-console.log(car);
+const factory = new CarFactory();
+const myCar = factory.createCar({ doors: 2, color: "red" });
+console.log(myCar);
       </code></pre>
+        <p>
+          <em>Explanation:</em> This example uses a factory to create car
+          objects based on the provided options, abstracting the instantiation
+          logic from the client.
+        </p>
       </section>
 
       <!-- Chapter 3: Structural Patterns -->
-      <section id="decorator">
-        <h3>Chapter 3.1: Decorator Pattern</h3>
-        <p>
-          The Decorator Pattern allows behavior to be added to an individual
-          object, dynamically, without affecting the behavior of other objects
-          from the same class.
-        </p>
-        <pre><code class="js">
-// Example of a Decorator Pattern in JavaScript
-function Coffee() {
-  this.cost = function() {
-    return 5;
-  }
-}
-
-function Milk(coffee) {
-  this.cost = function() {
-    return coffee.cost() + 1;
-  }
-}
-
-// Usage:
-const simpleCoffee = new Coffee();
-const milkCoffee = new Milk(simpleCoffee);
-console.log(milkCoffee.cost()); // 6
-      </code></pre>
-      </section>
-
       <section id="adapter">
-        <h3>Chapter 3.2: Adapter Pattern</h3>
+        <h1>Chapter 3: Structural Patterns</h1>
+        <h2>Adapter Pattern</h2>
         <p>
-          The Adapter Pattern allows objects with incompatible interfaces to
-          work together.
+          The Adapter Pattern allows two incompatible interfaces to work
+          together. It converts the interface of a class into another interface
+          that clients expect.
         </p>
-        <pre><code class="js">
-// Example of an Adapter Pattern in JavaScript
+        <img
+          src="https://refactoring.guru/images/patterns/adapter/structure.png"
+          alt="Adapter Pattern Diagram"
+        />
+        <h3>JavaScript Code Example</h3>
+        <pre><code>
+// Adapter Pattern in JavaScript
 class OldCalculator {
-  operations(t1, t2, operation){
-    switch(operation){
-      case 'add': return t1 + t2;
-      case 'sub': return t1 - t2;
-      default: return NaN;
-    }
+  add(a, b) {
+    return a + b;
   }
 }
 
 class NewCalculator {
-  add(t1, t2){
-    return t1 + t2;
-  }
-  
-  subtract(t1, t2){
-    return t1 - t2;
+  addNumbers(a, b) {
+    return a + b;
   }
 }
 
-// Adapter
 class CalculatorAdapter {
-  constructor(){
-    this.calculator = new NewCalculator();
+  constructor() {
+    this.newCalculator = new NewCalculator();
   }
   
-  operations(t1, t2, operation){
-    switch(operation){
-      case 'add': return this.calculator.add(t1, t2);
-      case 'sub': return this.calculator.subtract(t1, t2);
-      default: return NaN;
-    }
+  add(a, b) {
+    return this.newCalculator.addNumbers(a, b);
   }
 }
 
-// Usage:
-const adaptedCalculator = new CalculatorAdapter();
-console.log(adaptedCalculator.operations(10, 5, 'sub')); // 5
+const calculator = new CalculatorAdapter();
+console.log(calculator.add(5, 10)); // 15
       </code></pre>
+        <p>
+          <em>Explanation:</em> This adapter wraps the new calculator, providing
+          an interface that matches the old calculator's method signature.
+        </p>
+      </section>
+
+      <section id="decorator">
+        <h2>Decorator Pattern</h2>
+        <p>
+          The Decorator Pattern dynamically adds responsibilities to an object.
+          This pattern provides a flexible alternative to subclassing for
+          extending functionality.
+        </p>
+        <img
+          src="https://refactoring.guru/images/patterns/decorator/structure.png"
+          alt="Decorator Pattern Diagram"
+        />
+        <h3>JavaScript Code Example</h3>
+        <pre><code>
+// Decorator Pattern in JavaScript
+class SimpleCoffee {
+  cost() {
+    return 2;
+  }
+}
+
+class MilkDecorator {
+  constructor(coffee) {
+    this.coffee = coffee;
+  }
+  cost() {
+    return this.coffee.cost() + 0.5;
+  }
+}
+
+let coffee = new SimpleCoffee();
+coffee = new MilkDecorator(coffee);
+console.log(coffee.cost()); // 2.5
+      </code></pre>
+        <p>
+          <em>Explanation:</em> The <code>MilkDecorator</code> adds extra cost
+          to the basic coffee without modifying the original
+          <code>SimpleCoffee</code> class.
+        </p>
       </section>
 
       <!-- Chapter 4: Behavioral Patterns -->
       <section id="observer">
-        <h3>Chapter 4.1: Observer Pattern</h3>
+        <h1>Chapter 4: Behavioral Patterns</h1>
+        <h2>Observer Pattern</h2>
         <p>
-          The Observer Pattern is used when there is one-to-many relationship
-          between objects. When one object changes state, all its dependents are
-          notified.
+          The Observer Pattern defines a one-to-many dependency between objects
+          so that when one object changes state, all its dependents are notified
+          automatically.
         </p>
-        <pre><code class="js">
-// Example of Observer Pattern in JavaScript
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Observer_pattern.svg/600px-Observer_pattern.svg.png"
+          alt="Observer Pattern Diagram"
+        />
+        <h3>JavaScript Code Example</h3>
+        <pre><code>
+// Observer Pattern in JavaScript
 class Subject {
-  constructor(){
+  constructor() {
     this.observers = [];
   }
-  
-  subscribe(observer){
+  subscribe(observer) {
     this.observers.push(observer);
   }
-  
-  unsubscribe(observer){
+  unsubscribe(observer) {
     this.observers = this.observers.filter(obs => obs !== observer);
   }
-  
-  notify(data){
+  notify(data) {
     this.observers.forEach(observer => observer.update(data));
   }
 }
 
 class Observer {
-  constructor(name){
-    this.name = name;
-  }
-  
-  update(data){
-    console.log(`${this.name} received data: ${data}`);
+  update(data) {
+    console.log("Observer received data:", data);
   }
 }
 
-// Usage:
 const subject = new Subject();
-const observer1 = new Observer("Observer 1");
-const observer2 = new Observer("Observer 2");
-
+const observer1 = new Observer();
+const observer2 = new Observer();
 subject.subscribe(observer1);
 subject.subscribe(observer2);
-
-subject.notify("New Data!"); // Both observers are notified.
+subject.notify("Hello Observers!");
       </code></pre>
+        <p>
+          <em>Explanation:</em> This implementation demonstrates how multiple
+          observers are notified when the subject’s state changes.
+        </p>
       </section>
 
       <section id="strategy">
-        <h3>Chapter 4.2: Strategy Pattern</h3>
+        <h2>Strategy Pattern</h2>
         <p>
-          The Strategy Pattern defines a family of algorithms, encapsulates each
-          one, and makes them interchangeable.
+          The Strategy Pattern enables selecting an algorithm's behavior at
+          runtime. It defines a family of algorithms, encapsulates each one, and
+          makes them interchangeable.
         </p>
-        <pre><code class="js">
-// Example of Strategy Pattern in JavaScript
-class StrategyContext {
-  constructor(strategy) {
+        <img
+          src="https://refactoring.guru/images/patterns/strategy/structure.png"
+          alt="Strategy Pattern Diagram"
+        />
+        <h3>JavaScript Code Example</h3>
+        <pre><code>
+// Strategy Pattern in JavaScript
+class StrategyA {
+  execute(a, b) {
+    return a + b;
+  }
+}
+
+class StrategyB {
+  execute(a, b) {
+    return a * b;
+  }
+}
+
+class Context {
+  setStrategy(strategy) {
     this.strategy = strategy;
   }
-  
-  executeStrategy(data) {
-    return this.strategy(data);
+  executeStrategy(a, b) {
+    return this.strategy.execute(a, b);
   }
 }
 
-// Define strategies
-function strategyAdd(data) {
-  return data.reduce((a, b) => a + b, 0);
-}
-
-function strategyMultiply(data) {
-  return data.reduce((a, b) => a * b, 1);
-}
-
-// Usage:
-const contextAdd = new StrategyContext(strategyAdd);
-console.log(contextAdd.executeStrategy([1,2,3,4])); // 10
-
-const contextMultiply = new StrategyContext(strategyMultiply);
-console.log(contextMultiply.executeStrategy([1,2,3,4])); // 24
+const context = new Context();
+context.setStrategy(new StrategyA());
+console.log(context.executeStrategy(5, 10)); // 15
+context.setStrategy(new StrategyB());
+console.log(context.executeStrategy(5, 10)); // 50
       </code></pre>
+        <p>
+          <em>Explanation:</em> This code illustrates how different strategies
+          can be swapped at runtime to change the algorithm's behavior.
+        </p>
       </section>
 
-      <!-- Chapter 5: Advanced Topics -->
-      <section id="modular">
-        <h3>Chapter 5.1: Module Pattern</h3>
+      <!-- Chapter 5: Real-World & GUI Patterns -->
+      <section id="mvc">
+        <h1>Chapter 5: Real-World Examples & GUI Patterns</h1>
+        <h2>MVC Pattern</h2>
         <p>
-          The Module Pattern helps in organizing code by encapsulating related
-          variables and functions, providing both public and private access.
+          The Model-View-Controller (MVC) Pattern divides an application into
+          three interconnected components. This separation helps manage
+          complexity in large applications.
         </p>
-        <pre><code class="js">
-// Example of Module Pattern in JavaScript
-const myModule = (function(){
-  // Private variable and function
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/2/2d/MVC-Overview.svg"
+          alt="MVC Pattern Diagram"
+        />
+        <h3>Example Explanation</h3>
+        <p>
+          <strong>Model:</strong> Manages data and business logic.<br />
+          <strong>View:</strong> Presents data to the user.<br />
+          <strong>Controller:</strong> Handles input and updates the Model and
+          View.
+        </p>
+      </section>
+
+      <section id="module">
+        <h2>Module Pattern</h2>
+        <p>
+          The Module Pattern encapsulates private variables and functions,
+          exposing only a public API. It is widely used for organizing and
+          structuring code.
+        </p>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Module_pattern.svg/600px-Module_pattern.svg.png"
+          alt="Module Pattern Diagram"
+        />
+        <h3>JavaScript Code Example</h3>
+        <pre><code>
+// Module Pattern in JavaScript
+const myModule = (function() {
   let privateVar = "I am private";
   
   function privateMethod() {
-    console.log(privateVar);
+    return privateVar;
   }
   
   return {
-    // Public API
-    publicMethod: function(){
-      privateMethod();
+    publicMethod: function() {
+      return privateMethod();
     }
-  }
+  };
 })();
 
-// Usage:
-myModule.publicMethod(); // "I am private"
+console.log(myModule.publicMethod()); // "I am private"
       </code></pre>
-      </section>
-
-      <section id="composite">
-        <h3>Chapter 5.2: Composite &amp; Other Advanced Patterns</h3>
         <p>
-          Advanced topics include composite patterns for tree-like structures,
-          flyweight for resource optimization, and more. Explore these patterns
-          as your application scales.
-        </p>
-        <p>
-          <em>Note:</em> Advanced design patterns often involve combining
-          several simpler patterns to solve complex problems.
+          <em>Explanation:</em> This example encapsulates private data and
+          functionality, exposing only a public method for external access.
         </p>
       </section>
     </div>
-
-    <!-- JavaScript for Sidebar and Charts -->
-    <script>
-      // Sidebar drop-down functionality
-      const dropdownBtns = document.querySelectorAll(".dropdown-btn");
-      dropdownBtns.forEach((btn) => {
-        btn.addEventListener("click", function () {
-          const dropdownContent = this.nextElementSibling;
-          dropdownContent.classList.toggle("active");
-        });
-      });
-
-      // Visualization: Chart for Chapter 1.2 (Benefits of Design Patterns)
-      const ctx = document.getElementById("benefitsChart").getContext("2d");
-      const benefitsChart = new Chart(ctx, {
-        type: "pie",
-        data: {
-          labels: [
-            "Readability",
-            "Reusability",
-            "Maintainability",
-            "Scalability",
-          ],
-          datasets: [
-            {
-              data: [30, 25, 25, 20],
-              backgroundColor: [
-                "rgba(75, 192, 192, 0.7)",
-                "rgba(255, 159, 64, 0.7)",
-                "rgba(153, 102, 255, 0.7)",
-                "rgba(255, 205, 86, 0.7)",
-              ],
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            title: {
-              display: true,
-              text: "Benefits of Using Design Patterns",
-            },
-          },
-        },
-      });
-    </script>
   </body>
 </html>
