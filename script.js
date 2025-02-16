@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { title: "Frontend", link: "./frontend.html" },
     { title: "React", link: "./react.html" },
     { title: "API", link: "./api.html" },
+    { title: "Project Architecture", link: "./projectarch.html" },
   ];
 
   // Select the container where the cards will be added
