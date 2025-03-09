@@ -26,6 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
     { title: "React", link: "./react.html" },
     { title: "API", link: "./api.html" },
     { title: "Data fetching", link: "./datafetch.html" },
+    {
+      title: "Coding Practice Hub",
+      link: "https://coding-practice-hub.vercel.app/",
+    },
     { title: "Project Architecture", link: "./projectarch.html" },
   ];
 
